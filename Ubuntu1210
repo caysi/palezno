@@ -48,6 +48,7 @@ sudo /etc/init.d/apache2 restart
 
 /* LAMP */
 sudo apt-get install lamp-server^
+sudo a2enmod rewrite
 cd /etc/apache2/sites-available/[yourhost]
 
 <VirtualHost *:80>
