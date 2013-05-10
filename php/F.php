@@ -1,6 +1,6 @@
 <?php
-define('ROOT_PATH', __DIR__);
-define('FUNCTIONS_PATH', __DIR__.'/functions');
+define('PALEZNO_PATH', __DIR__);
+define('FUNCTIONS_PATH', PALEZNO_PATH.'/functions');
 /**
 * Класс для автоматического подключения файлов с функциями
 *
