@@ -8,6 +8,14 @@ fusermount -u $HOME/sshfs
 #stty echo
 #printf "\n"
 
-sshfs $1:/ $HOME/sshfs
-ssh $1
+if [ $2 ]
+then
+	KEY="-i $2 "
+	KEYFS="-o IdentityFile=$2 "
+else
+	KEY=""
+	KEYFS=""
+fi
+sshfs $KEYFS$1:/ $HOME/sshfs
+ssh $KEY$1
 fusermount -u $HOME/sshfs
