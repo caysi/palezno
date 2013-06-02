@@ -1,0 +1,39 @@
+[user]
+	name = Caysi
+	email = caysi@gg.loc
+[core]
+	autocrlf = input
+	safecrlf = true
+
+
+
+[color]
+	branch = auto
+	diff   = auto
+	status = auto
+
+[color "branch"]
+	current = cyan bold;yellow reverse
+	local   = yellow
+	remote  = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old  = red bold
+	new  = green bold
+
+[color "status"]
+	added     = yellow
+	changed   = green
+	untracked = cyan
+
+[alias]
+	st    = status
+	di    = diff
+	diw   = diff --word-diff
+	diwc  = diff --word-diff=color
+	lo    = log
+	los   = log --stat
+	loo   = log --oneline
+	loog  = log --oneline --graph
