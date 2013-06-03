@@ -64,7 +64,7 @@ cd /etc/apache2/sites-available/[yourhost]
 </VirtualHost>
 
 /etc/hosts
-sudo a2ensite [youthost]
+sudo a2ensite [yourhost]
 sudo /etc/init.d/apache2 reload
 
 

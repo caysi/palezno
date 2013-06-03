@@ -37,3 +37,6 @@
 	los   = log --stat
 	loo   = log --oneline
 	loog  = log --oneline --graph
+	co    = checkout
+	br    = branch
+	ci    = commit
