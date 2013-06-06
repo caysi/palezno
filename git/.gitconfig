@@ -1,13 +1,13 @@
-[user]
-	name = Caysi
-	email = caysi@gg.loc
 [core]
 	autocrlf = input
 	safecrlf = true
+[include]
+	path = .gitconfiguser
 
 
 
 [color]
+;	ui     = true
 	branch = auto
 	diff   = auto
 	status = auto
