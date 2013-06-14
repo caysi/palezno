@@ -10,11 +10,13 @@ namespace functions;
 }*/
 
 function var_dump(&$var) { //TODO сделать много параметров
+	echo '<hr>';
 	echo my_var_dump($var);
+	echo '<hr>';
 }
-function my_var_dump(&$var, $tag = 'pre', $indent=0) {
+function my_var_dump(&$var, $tag = 'pre', $indent=1) {
 	// Params
-	$indentType = '    ';
+	$indentType = '    '; // 4 пробела
 	$boolean  = array('name' => 'boolean',  'colorT' => 'green', 'colorF' => 'red');
 	$integer  = array('name' => 'integer',  'color' => 'blue');
 	$float    = array('name' => 'double',   'color' => 'grey');
@@ -22,7 +24,7 @@ function my_var_dump(&$var, $tag = 'pre', $indent=0) {
 	$array    = array('name' => 'array',    'color' => 'blue');
 	$object   = array('name' => 'object',   'color' => 'blue');
 	$resource = array('name' => 'resource', 'color' => 'blue');
-	$NULL     = array('name' => 'NULL',     'color' => 'yellow');
+	$NULL     = array('name' => 'NULL',     'color' => 'black');
 	// END Params
 
 	$indentPrint = '';
@@ -51,16 +53,41 @@ function my_var_dump(&$var, $tag = 'pre', $indent=0) {
 		$printString.= '<'.$tag.' style="color: '.$string['color'].';">\''.$var.'\'</'.$tag.'>';
 	}
 	elseif($type === $array['name']) {
-		$printString.= '<'.$tag.'>array(</'.$tag.'>';
-		foreach ($var as $key=>&$value) {
-			$printString.= '<pre>'.$indentPrint.'['.my_var_dump($key, 'span').'] => ';
+		$printString.= '<'.$tag.'><b>array</b>(</'.$tag.'>';
+
+		foreach($var as $key=>&$value) {
+			$printString.= '<pre>'.$indentPrint.my_var_dump($key, 'span').' => ';
 			$printString.= my_var_dump($value, 'span', $indent+1);
 			$printString.= ',</pre>';
 		}
-		$printString.= '<pre>'.$indentPrint.')</pre>'; //FIX надо на 1 меньше отступ
+
+		$printString.= '<'.$tag.'>'.$indentPrint.')</'.$tag.'>'; //FIX надо на 1 меньше отступ
+	}
+	elseif($type === $object['name']) {
+		$className = get_class($var);
+		$printString.= '<'.$tag.'><b>class</b> '.$className.'(</'.$tag.'>';
+
+		foreach((array)$var as $key=>$value) {
+			if(strpos($key, '*') === 1) { //TODO тут есть пе печатный 2 пробела
+				$visibility = '<b>protected</b>';
+				$key = str_replace('*', '', $key);
+			}
+			elseif(strpos($key, $className) === 1) { //TODO тут есть пе печатный 2 пробела
+				$visibility = '<b>private</b>  ';
+				$key = str_replace($className, '', $key);
+			}
+			else
+				$visibility = '<b>public</b>   ';
+
+			$printString.= '<pre>'.$indentPrint.$visibility.' '.'$'.$key.' = ';
+			$printString.= my_var_dump($value, 'span', $indent+1);
+			$printString.= ';</pre>';
+		}
+
+		$printString.= '<'.$tag.'>'.$indentPrint.')</'.$tag.'>'; //FIX надо на 1 меньше отступ
 	}
 	elseif($type === $NULL['name']) {
-		$printString.= '<'.$tag.' style="color: '.$NULL['color'].';">NULL</'.$tag.'>';
+		$printString.= '<'.$tag.' style="color: '.$NULL['color'].';"><b>NULL</b></'.$tag.'>';
 	}
 	return $printString;
 }/**/
