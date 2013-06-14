@@ -31,6 +31,7 @@
 [alias]
 	st    = status
 	di    = diff
+	dis   = diff --staged
 	diw   = diff --word-diff
 	diwc  = diff --word-diff=color
 	lo    = log
