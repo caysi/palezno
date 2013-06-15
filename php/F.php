@@ -21,7 +21,7 @@ class F {
 	*/
 	static function evalStr($name, &$args, $argsName = 'args') {
 		$evalStr = $name.'($'.$argsName.'['.implode('], $'.$argsName.'[', array_keys($args)).']);';
-		return $evalStr;
+		return 'return '.$evalStr;
 	}
 }
 ?>
