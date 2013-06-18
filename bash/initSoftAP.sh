@@ -10,7 +10,10 @@
 #	echo "hello"
 #fi
 
-
+if [ "$(dpkg --get-selections | grep 'hostapd')" = "" ] || [ "$(dpkg --get-selections | grep 'dhcp3-server')" = "" ]
+then
+	echo "Need installs some packages"
+fi
 
 
 
