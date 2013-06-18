@@ -13,7 +13,7 @@ function my_var_dump(&$var, $tag = 'pre', $indent=0) {
 	// Params
 	//$preStyle = ' margin: 1px 0;';
 	$indentType = '    '; // 4 пробела
-	$boolean  = array('name' => 'boolean',  'colorT' => 'green', 'colorF' => 'red');
+	$boolean  = array('name' => 'boolean',  'colorT' => 'black', 'colorF' => 'black');
 	$integer  = array('name' => 'integer',  'color' => 'blue');
 	$float    = array('name' => 'double',   'color' => 'grey');
 	$string   = array('name' => 'string',   'color' => 'green');
@@ -27,9 +27,9 @@ function my_var_dump(&$var, $tag = 'pre', $indent=0) {
 	$type = gettype($var);
 	if($type === $boolean['name']) {
 		if($var === TRUE)
-			$printString.= '<'.$tag.' style="color: '.$boolean['colorT'].';">TRUE</'.$tag.'>';
+			$printString.= '<'.$tag.' style="color: '.$boolean['colorT'].';"><b>TRUE</b></'.$tag.'>';
 		else
-			$printString.= '<'.$tag.' style="color: '.$boolean['colorF'].';">FALSE</'.$tag.'>';
+			$printString.= '<'.$tag.' style="color: '.$boolean['colorF'].';"><b>FALSE</b></'.$tag.'>';
 	}
 	elseif($type === $integer['name']) {
 		$printString.= '<'.$tag.' style="color: '.$integer['color'].';">'.$var.'</'.$tag.'>';

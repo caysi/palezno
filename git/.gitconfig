@@ -40,5 +40,5 @@
 	loog  = log --oneline --graph
 	co    = checkout
 	br    = branch
-	ci    = commit
+;	ci    = commit
 	two   = !git status && git diff
