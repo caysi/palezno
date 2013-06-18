@@ -61,7 +61,7 @@ function my_var_dump(&$var, $tag = 'pre', $indent=0) {
 	}
 	elseif($type === $object['name']) {
 		$className = get_class($var);
-		$printString.= '<'.$tag.'><b>class</b> '.$className.'{'."\n";
+		$printString.= '<'.$tag.'><b>class</b> '.$className.' {'."\n";
 
 		foreach((array)$var as $key=>$value) {
 			if(strpos($key, '*') === 1) { //TODO тут есть не печатный 2 пробела
