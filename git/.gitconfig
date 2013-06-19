@@ -36,8 +36,10 @@
 	diwc  = diff --word-diff=color
 	lo    = log
 	los   = log --stat
-	loo   = log --pretty=format:'%C(yellow)%h%C(reset) %ad | %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=iso
-	loog  = log --pretty=format:'%C(yellow)%h%C(reset) %ad | %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=iso --graph
+	loo   = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"'
+	loog  = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --graph
+	lloo  = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local
+	lloog = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local --graph
 	co    = checkout
 	br    = branch
 ;	ci    = commit
