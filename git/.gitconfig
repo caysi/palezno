@@ -36,9 +36,9 @@
 	diwc  = diff --word-diff=color
 	lo    = log
 	los   = log --stat
-	loo   = log --oneline
-	loog  = log --oneline --graph
+	loo   = log --pretty=format:'%C(yellow)%h%C(reset) %ad | %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=iso
+	loog  = log --pretty=format:'%C(yellow)%h%C(reset) %ad | %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=iso --graph
 	co    = checkout
 	br    = branch
 ;	ci    = commit
-	two   = !git status && git diff
+	sd    = !git status && git diff
