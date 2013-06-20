@@ -1,6 +1,7 @@
 [core]
 	autocrlf = input
 	safecrlf = true
+    ;pager    = less -A
 [include]
 	path = .gitconfiguser
 
@@ -31,16 +32,22 @@
 [alias]
 	st    = status
 	di    = diff
-	dis   = diff --staged
-	diw   = diff --word-diff
-	diwc  = diff --word-diff=color
+	dis   = diff --staged			;diff файлов добавленных в коммит
+	diw   = diff --word-diff		;diff показывает изменненые слова, а не строки
+	diwc  = diff --word-diff=color	;=diw без скобок, отличие только в цвете
 	lo    = log
-	los   = log --stat
+	los   = log --stat				;показывает затронутые файлы
+			;log в красивом виде, в отдну строку
 	loo   = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"'
+			;=loo + график
 	loog  = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --graph
+
+			;=loo и =loog только дата показывается в локоной временой зоне
 	lloo  = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local
 	lloog = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local --graph
 	co    = checkout
 	br    = branch
 ;	ci    = commit
 	sd    = !git status && git diff
+	showm = !git diff $1^1 $1		;diff мержа
+	showms= !git diff $1^1 $1 --stat;=showm покажет только затронутые файлы
