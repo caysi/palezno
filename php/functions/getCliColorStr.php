@@ -1,4 +1,6 @@
 <?php
+//http://www.bashguru.com/2010/01/shell-colors-colorizing-shell-scripts.html
+//http://www.if-not-true-then-false.com/2010/php-class-for-coloring-php-command-line-cli-scripts-output-php-output-colorizing-using-bash-shell-colors/
 namespace functions;
 
 function getCliColorStr($string, $foregr = 0, $backgr = 0, $mode = 'normal') {
