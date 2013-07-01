@@ -1,52 +1,52 @@
-/* Отключение гостевого сеанса */
-Дописать в фаил /etc/lightdm/lightdm.conf:
-allow-guest=false
+####Отключение гостевого сеанса
+Дописать в фаил /etc/lightdm/lightdm.conf
+	allow-guest=false
 
-/* Включение X11 Forvarding */
-	Серевер:
-sudo apt-get install openssh-server
-Изменить /etc/ssh/sshd_config:
-X11Forwarding yes
-	Клиен:
-Изменить /etc/ssh/ssh_config:
-ForwardX11 yes
-ForwardX11Trusted yes
+####Включение X11 Forvarding
+######Серевер
+	sudo apt-get install openssh-server
+Изменить /etc/ssh/sshd_config   
+	X11Forwarding yes
+######Клиен
+Изменить /etc/ssh/ssh_config   
+	ForwardX11 yes
+	ForwardX11Trusted yes
 
 
-/* Вернуть полосы прокрутки */
+####Вернуть полосы прокрутки
 sudo apt-get remove overlay-scrollbar liboverlay-scrollbar3-0.2-0 liboverlay-scrollbar-0.2-0
 	Новые полосы прокрутки: 
 sudo apt-get install overlay-scrollbar liboverlay-scrollbar3-0.2-0 liboverlay-scrollbar-0.2-0
 
-/* Русские буквы tty */
+####Русские буквы tty
 sudo dpkg-reconfigure console-setup
 Выбираем UTF-8 -> VGA
 Дописать в /etc/rc.local перед exit 0
 setupcon
 
-/* Change layout XFCE */
+####Change layout XFCE
 apt-get istall xfce4-xkb-plugin
 Add to panel
 Select Russial(DOS)
 
-/* Не совпадение времени с Windows */
+####Не совпадение времени с Windows
 Change /etc/default/rcS:
 UTC=no
 
-/* Proxy */
+####Proxy
 /etc/bash.bashrc
 export http_proxy=http://username:password@proxyserver.net:port/
 export ftp_proxy=http://username:password@proxyserver.net:port/
 
-/* Mod Rewrite */
+####Mod Rewrite
 sudo ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
 sudo /etc/init.d/apache2 restart
 
-/* PHP cURL */
+####PHP cURL
 sudo apt-get install curl libcurl3 libcurl3-dev php5-curl php5-mcrypt
 sudo /etc/init.d/apache2 restart
 
-/* LAMP */
+###LAMP
 sudo apt-get install lamp-server^
 sudo a2enmod rewrite
 cd /etc/apache2/sites-available/[yourhost]
@@ -69,11 +69,13 @@ sudo /etc/init.d/apache2 reload
 
 
 
-/* Skype */ https://help.ubuntu.com/community/Skype
+####Skype
+[хз](https://help.ubuntu.com/community/Skype)
 sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
 sudo apt-get update && sudo apt-get install skype
 
-/* phpStorn */ http://www.jetbrains.com/phpstorm/
+####phpStorn
+http://www.jetbrains.com/phpstorm/
 Disable autosave
 settings / General / confirm application exit : checked
 settings / General / confirm application exit : save file on frame deactivation : unchecked
@@ -99,7 +101,8 @@ wine
 
 
 
-/* Создание скрытого супер пользователя */ http://archlinux.org.ru/forum/topic/4414/?page=1
+####Создание скрытого супер пользователя
+http://archlinux.org.ru/forum/topic/4414/?page=1
 http://myubuntu.ru/faq/kak-sozdat-sudo-polzovatelya-v-ubuntu
 
 useradd -d /home/HIDDEN_USER -m HIDDEN_USER
@@ -108,18 +111,18 @@ usermod -u 999 HIDDEN_USER
 
 adduser HIDDEN_USER sudo
 
-# disable powersave
+####disable powersave
 setterm -powersave off -blank 0
 
 
-# sshfs
+####sshfs
 apt-get install sshfs
 usermod -a -G fuse [user_name]
 sshfs -o workaround=rename -p 8022 baholdin@baholdin.dev.easydate.biz:/var/www/vhosts/baholdin.dev.easydate.biz/htdocs/ /mnt/cupid
 ssh -p 8022 -l baholdin baholdin.dev.easydate.biz
 fusermount -u /mnt/cupid
 
-# xfce two monitors
-#http://www.prolinux.org/node/172
+####xfce two monitors
+http://www.prolinux.org/node/172
 xrandr --output HDMI1 --right-of VGA1 --primary
-#http://vasilisc.com/multiple-monitors-xfce
+http://vasilisc.com/multiple-monitors-xfce
