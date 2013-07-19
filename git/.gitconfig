@@ -30,6 +30,7 @@
 	untracked = cyan
 
 [alias]
+	pus   = !git pull && git submodule update --init
 	st    = status
 	di    = diff
 	dis   = diff --staged			;diff файлов добавленных в коммит
