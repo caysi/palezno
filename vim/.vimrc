@@ -80,8 +80,12 @@ endif
 " Если к плагину идет файл документации в виде txt файла, то он помещается в директорию ~/.vim/doc. После добавления документации к плагину следует запустить Vim, и выполнить команду генерации(обновления) файла тагов для всей документации в папке doc
 ":helptags $HOME/.vim/doc
 
-"if has("autocmd")
-if &term =~ "xterm" && filewritable($HOME."/.config/Terminal/terminalrc")
+" TODO Убрать дублирование
+if &term =~ "xterm" && filewritable($HOME."/.config/xfce4/terminal/terminalrc")
+	au InsertEnter * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_IBEAM/' ~/.config/xfce4/terminal/terminalrc"
+	au InsertLeave * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
+	au VimLeave * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
+elseif &term =~ "xterm" && filewritable($HOME."/.config/Terminal/terminalrc")
 	au InsertEnter * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_IBEAM/' ~/.config/Terminal/terminalrc"
 	au InsertLeave * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/Terminal/terminalrc"
 	au VimLeave * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/Terminal/terminalrc"
