@@ -142,6 +142,7 @@ map <C-Q> <Esc>:qa<cr>
 imap [ []<LEFT>
 	" Аналогично и для {
 imap {<CR> {<CR>}<Esc>O
+imap (<CR> (<CR>)<Esc>O
 
 
 
