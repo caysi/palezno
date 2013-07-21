@@ -139,7 +139,7 @@ imap <F2> <esc>:w<cr>i
 map <C-Q> <Esc>:qa<cr>
 
 	" Редко когда надо [ без пары =)
-imap [ []<LEFT>
+"imap [ []<LEFT>
 	" Аналогично и для {
 imap {<CR> {<CR>}<Esc>O
 imap (<CR> (<CR>)<Esc>O
@@ -179,9 +179,9 @@ set dictionary=~/.vim/dic/phpFuncList.txt	" Используем словарь 
 
 " Полезные "быстрые шаблоны"
 " Вывод отладочной информации
-iabbrev dbg echo '<xmp>'; var_dump( ); echo '</xmp>'; //TODO DELETE
-iabbrev vd F::var_dump(); //TODO DELETE
-iabbrev vdo F::var_dump_old(); //TODO DELETE
+iabbrev dbg echo '<xmp>'; var_dump(); echo '</xmp>'; //TODO DELETE<ESC>F(li<C-R>
+iabbrev vd F::var_dump(); //TODO DELETE<ESC>F(li<C-R>
+iabbrev vdo F::var_dump_old(); //TODO DELETE<ESC>F(li<C-R>
 iabbrev tm echo 'File: '.__FILE__.', line: '.__LINE__."\n<br>"; //TODO DELETE
 
 
