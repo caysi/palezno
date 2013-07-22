@@ -126,3 +126,10 @@ fusermount -u /mnt/cupid
 http://www.prolinux.org/node/172
 xrandr --output HDMI1 --right-of VGA1 --primary
 http://vasilisc.com/multiple-monitors-xfce
+
+####AutoMoutn ntfs
+http://ubuntolog.ru/avtomaticheskoe-montirovanie-razdelov-s-ntfs-pri-zagruzke-ubuntu.html
+sudo blkid  
+edit /etc/fstab  
+`UUID=<uuid>           <mount_path>    <type>  <options> <dump> <pass>`
+`UUID=363C991F3C98DAE7 /media/windows/ ntfs-3g users,defaults 0 0`
