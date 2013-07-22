@@ -39,7 +39,12 @@ class F {
 	* Подготовка строки для eval
 	*/
 	static function evalStr($name, &$args, $argsName = 'args') {
-		$evalStr = $name.'($'.$argsName.'['.implode('], $'.$argsName.'[', array_keys($args)).']);';
+		if($args) {
+			$evalStr = $name.'($'.$argsName.'['.implode('], $'.$argsName.'[', array_keys($args)).']);';
+		}
+		else {
+			$evalStr = $name.'();';
+		}
 		return 'return '.$evalStr;
 	}
 }
