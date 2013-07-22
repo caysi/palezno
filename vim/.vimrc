@@ -72,6 +72,10 @@ let php_folding=2		" для php
 "set foldmethod=expr
 set foldcolumn=2		" Показать где есть фолдинги
 
+	" SWAP AND backup
+set directory=~/.vim/swap//		" Все swap файлы будут помещаться в заданную директорию
+set backupdir=~/.vim/backup//	" Если установлено set backup, то помещаются в этот каталог
+
 " Чаще всего приходится работать с файлами дампов mysql. Vim имеет поддержку SQL, но СУБД много, и они отличаются друг от друга, например по типам столбцов, и я решил по умолчанию настроить поддержку SQL СУБД MySQL:
 if has("autocmd")
     autocmd BufRead *.sql set filetype=mysql
