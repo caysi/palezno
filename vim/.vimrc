@@ -132,8 +132,16 @@ autocmd VimLeave * mksession! ~/.vim/last-session.vim
 "=====================================================
 
 	" C-c and C-v - Copy/Paste в "глобальный клипборд"
-vmap <C-C> "+yi
+vmap <C-C> "+y
 imap <C-V> <esc>"+gPi
+
+	" Tabs
+:nmap <S-tab> :tabprevious<cr>
+:nmap <C-tab> :tabnext<cr>
+:imap <S-tab> <ESC>:tabprevious<cr>
+:imap <C-tab> <ESC>:tabnext<cr>
+:vmap <S-tab> <ESC>:tabprevious<cr>
+:vmap <C-tab> <ESC>:tabnext<cr>
 
 	" F2 - быстрое сохранение
 nmap <F2> :w<cr>
