@@ -185,6 +185,9 @@ set complete+=t
 "     PHP настройки
 "=========================
 
+set makeprg=php\ -l\ %
+set errorformat=%m\ in\ %f\ on\ line\ %l
+
 set dictionary=~/.vim/dic/phpFuncList.txt	" Используем словарь PHP для автодополнения,http://lerdorf.com/funclist.txt
 " Сделаем удобную навигацию по мануалу PHP
 "set keywordprg=~/.vim/bin/php_doc
