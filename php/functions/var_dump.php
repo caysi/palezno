@@ -1,15 +1,13 @@
 <?php
-namespace functions;
-
-function var_dump() {
+function caysi_var_dump() {
 	$args = func_get_args();
 	foreach($args as &$var) {
 		echo '<hr>';
-		echo my_var_dump($var);
+		echo color_var_dump($var);
 	}
 	echo '<hr style="color: red;">';
 }
-function my_var_dump(&$var, $tag = 'pre', $indent=0) {
+function color_var_dump(&$var, $tag = 'pre', $indent=0) { //TODO color_...
 	// Params
 	//$preStyle = ' margin: 1px 0;';
 	$indentType = '    '; // 4 пробела
@@ -51,8 +49,8 @@ function my_var_dump(&$var, $tag = 'pre', $indent=0) {
 		$printString.= '<'.$tag.'><b>array</b>('."\n";
 
 		foreach($var as $key=>&$value) {
-			$printString.= str_repeat($indentType, $indent+1).my_var_dump($key, 'span').' => ';
-			$printString.= my_var_dump($value, 'span', $indent+1);
+			$printString.= str_repeat($indentType, $indent+1).color_var_dump($key, 'span').' => ';
+			$printString.= color_var_dump($value, 'span', $indent+1);
 			$printString.= ','."\n";
 		}
 
@@ -76,7 +74,7 @@ function my_var_dump(&$var, $tag = 'pre', $indent=0) {
 				$visibility = '<b>public</b>   ';
 
 			$printString.= ''.str_repeat($indentType, $indent+1).$visibility.' '.'$'.$key.' = ';
-			$printString.= my_var_dump($value, 'span', $indent+1);
+			$printString.= color_var_dump($value, 'span', $indent+1);
 			$printString.= ';'."\n";
 		}
 

@@ -1,17 +1,17 @@
 <?php
-define('PALEZNO_PATH', __DIR__);
-define('FUNCTIONS_PATH', PALEZNO_PATH.'/functions');
-define('FUNCTIONS_NAMESPACE', '\\functions\\'); //TODO типа немспейс, чтоб не было проблем со старыми версиями php
+define('PALEZNO_PATH',      __DIR__);
+define('FUNCTIONS_PATH',    PALEZNO_PATH.'/functions');
+define('FUNCTIONS_PREFIX', 'caysi_');
 // определяем скрит запущет из терминала или нет
 if(PHP_SAPI == 'cli'){ define('THIS_TERMINAL', TRUE); } else { define('THIS_TERMINAL', FALSE); }
 
 /**
 * Класс для автоматического подключения файлов с функциями
 *
-* \F::[functionName]($arg[, $arg2....]);
+* F::[functionName]($arg[, $arg2....]);
 */
 class F {
-	static function __callStatic($name, $args) {
+	static function _call($name, $args = NULL) {
 		if(!file_exists(FUNCTIONS_PATH.'/'.$name.'.php')) {
 			$alias = parse_ini_file(PALEZNO_PATH.'/F_alias.ini');
 			if(isset($alias[$name])) {
@@ -26,15 +26,19 @@ class F {
 		}
 
 		require_once(FUNCTIONS_PATH.'/'.$name.'.php');
-		$name = FUNCTIONS_NAMESPACE.$name;
+		$name = FUNCTIONS_PREFIX.$name;
 		return eval(self::evalStr($name, $args));
+	}
+	static function __callStatic($name, $args) {
+		return self::_call($name, $args);
 	}
 	/**
 	* Для версий ниже 5.3
 	*/
 	function __call($name, $args) {
-		return self::__callStatic($name, $args);
+		return self::_call($name, $args);
 	}
+
 	/**
 	* Подготовка строки для eval
 	*/
@@ -48,4 +52,7 @@ class F {
 		return 'return '.$evalStr;
 	}
 }
+
+require_once(FUNCTIONS_PATH.'/errorHandler.php');
+
 ?>
