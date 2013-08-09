@@ -56,11 +56,11 @@ function caysi_register_shutdown_function() {
 	}
 
 	if(empty($GLOBALS['debug_info'])) {
-		echo '<div style="position: absolute; right:0; top:0; background-color: yellow; width: 30px; height: 30px;"></div>';
+		echo '<div style="z-index:9999; position:absolute; right:0;top:0; background-color:yellow; width:30px;height:30px;"></div>';
 	}
 	else {
-		echo '<div id="debug_info" style="display: none; position: absolute; left:0;top:0; width:100%;height:100%; background-color:grey;">'.$GLOBALS['debug_info'].'</div>';
-		echo '<div style="position: absolute; right:0; top:0; background-color: red; width: 30px; height: 30px;" onclick="document.getElementById(\'debug_info\').style.display = \'block\'"></div>';
+		echo '<div id="debug_info" style="z-index:9999; display: none; position: absolute; left:0;top:0; width:100%;height:100%; background-color:grey;">'.$GLOBALS['debug_info'].'</div>';
+		echo '<div style="z-index:9999; position: absolute; right:0; top:0; background-color: red; width: 30px; height: 30px;" onclick="document.getElementById(\'debug_info\').style.display = \'block\'"></div>';
 	}
 }
 register_shutdown_function('caysi_register_shutdown_function');
