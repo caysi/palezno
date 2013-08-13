@@ -8,6 +8,9 @@ function caysi_var_dump() {
 	echo '<hr style="color: red;">';
 }
 function color_var_dump(&$var, $tag = 'pre', $indent=0) { //TODO color_...
+	if($indent > 5)
+		return '<'.$tag.' style="color: red;">{...}</'.$tag.'>';
+
 	// Params
 	//$preStyle = ' margin: 1px 0;';
 	$indentType = '    '; // 4 пробела
