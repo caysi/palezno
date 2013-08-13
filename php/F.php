@@ -5,6 +5,9 @@ define('FUNCTIONS_PREFIX', 'caysi_');
 // определяем скрит запущет из терминала или нет
 if(PHP_SAPI == 'cli'){ define('THIS_TERMINAL', TRUE); } else { define('THIS_TERMINAL', FALSE); }
 
+// Тут будет дебаг информация скрытая от пользователя
+$GLOBALS['debug_info'] = '';
+
 /**
 * Класс для автоматического подключения файлов с функциями
 *

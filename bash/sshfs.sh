@@ -1,5 +1,5 @@
 #!/bin/bash
-fusermount -u $HOME/sshfs
+#fusermount -u $HOME/sshfs
 
 # Получение пароля
 #stty -echo
@@ -16,6 +16,19 @@ else
 	KEY=""
 	KEYFS=""
 fi
-sshfs $KEYFS$1:/ $HOME/sshfs
-ssh $KEY$1
-fusermount -u $HOME/sshfs
+if [ ! -d $HOME/sshfs/$1 ]
+then
+	FSDIR=$HOME/sshfs/$1
+	mkdir $FSDIR
+	sshfs $KEYFS$1:/ $FSDIR
+
+	ssh $KEY$1
+
+	fusermount -u $FSDIR
+	if [ ! "$(ls -A $FSDIR)" ]
+	then
+		rm -r $FSDIR
+	fi
+else
+	ssh $KEY$1
+fi
