@@ -1,4 +1,5 @@
 <?php
+
 function caysi_renderBacktrace(&$backtrace, $killFuncName=NULL) {
 	$count = 0;
 	$libDir = dirname(dirname(dirname(__FILE__)));
@@ -28,9 +29,8 @@ function caysi_renderBacktrace(&$backtrace, $killFuncName=NULL) {
 		$content.= '<td>'.$bt['file'].'</td>';
 		$content.= '<td>'.$bt['line'].'</td>';
 		$content.= '<td>'.$bt['function'].'</td>';
-		/*
 		if(isset($bt['args']))
-			$content.= '<td><xmp>'.var_export($bt['args'], true).'</xmp></td>';
+			$content.= '<td>'.F::_call('var_export', array($bt['args'])).'</td>';
 		else
 			$content.= '<td>NULL</td>';/**/
 		$content.= '</tr>';

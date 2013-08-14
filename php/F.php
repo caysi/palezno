@@ -11,7 +11,7 @@ $GLOBALS['debug_info'] = '';
 /**
 * Класс для автоматического подключения файлов с функциями
 *
-* F::[functionName]($arg[, $arg2....]);
+* F::[functionName]([$arg, $arg2....]);
 */
 class F {
 	static function _call($name, $args = NULL) {

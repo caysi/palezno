@@ -63,6 +63,14 @@ function caysi_register_shutdown_function() {
 		echo '<div style="z-index:9999; position: absolute; right:0; top:0; background-color: red; width: 30px; height: 30px;" onclick="document.getElementById(\'debug_info\').style.display = \'block\'"></div>';
 	}
 }
+//function caysi
+/*PHP 5.0.4:
+*  1. ob_callback
+*  2. shutdown_func
+* PHP 5.1.2:
+*  1. shutdown_func
+*  2. ob_callback
+*/
 register_shutdown_function('caysi_register_shutdown_function');
 
 
