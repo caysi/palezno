@@ -56,12 +56,12 @@ function caysi_register_shutdown_function() {
 	}
 
 
-	echo '<style type="text/css">'.file_get_contents(PALEZNO_PATH.'/functions/static/css/shutdown.css').'</style>';
+	echo F::_call('getCSS', array('shutdown'));
 	if(empty($GLOBALS['debug_info'])) {
 		echo '<div id="shutdown_button" class="empty"></div>';
 	}
 	else {
-		echo '<script type="text/javascript">'.file_get_contents(PALEZNO_PATH.'/functions/static/js/shutdown.js').'</script>';
+		echo F::_call('getJS', array('shutdown'));
 		echo '<div id="shutdown_content" style="display:none;">'.$GLOBALS['debug_info'].'</div>';
 		echo '<div id="shutdown_button" class="not_empty" onclick="showContent()"></div>';
 	}

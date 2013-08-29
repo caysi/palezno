@@ -1,6 +1,7 @@
 <?php
 define('PALEZNO_PATH',      dirname(__FILE__));
 define('FUNCTIONS_PATH',    PALEZNO_PATH.'/functions');
+define('STATIC_PATH',       FUNCTIONS_PATH.'/static');
 define('FUNCTIONS_PREFIX', 'caysi_');
 // определяем скрит запущет из терминала или нет
 if(PHP_SAPI == 'cli'){ define('THIS_TERMINAL', TRUE); } else { define('THIS_TERMINAL', FALSE); }

@@ -23,6 +23,7 @@ function caysi_renderBacktrace(&$backtrace, $killFuncName=NULL) {
 	unset($count, $key);
 
 	$content = '<table border="1">';
+	$content.= F::_call('getJS', array('backtrace'));
 	foreach($backtrace as $key=>&$bt) {
 		$content.= '<tr>';
 		$content.= '<td>'.$key.'</td>'; //todo delete
@@ -30,7 +31,7 @@ function caysi_renderBacktrace(&$backtrace, $killFuncName=NULL) {
 		$content.= '<td>'.$bt['line'].'</td>';
 		$content.= '<td>'.$bt['function'].'</td>';
 		if(isset($bt['args']))
-			$content.= '<td>'.F::_call('var_export', array($bt['args'])).'</td>';
+			$content.= '<td><a href="#" onclick="showBacktraceVars(this); return false;">Show</a><div style="display:none;">'.F::_call('var_export', array($bt['args'])).'</div></td>';
 		else
 			$content.= '<td>NULL</td>';/**/
 		$content.= '</tr>';
