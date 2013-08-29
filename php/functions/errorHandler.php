@@ -55,12 +55,15 @@ function caysi_register_shutdown_function() {
 		$GLOBALS['debug_info'].= F::_call('renderBacktrace', array($GLOBALS['backtrace'], 'caysi_register_tick_function'));
 	}
 
+
+	echo '<style type="text/css">'.file_get_contents(PALEZNO_PATH.'/functions/static/css/shutdown.css').'</style>';
 	if(empty($GLOBALS['debug_info'])) {
-		echo '<div style="z-index:9999; position:absolute; right:0;top:0; background-color:yellow; width:30px;height:30px;"></div>';
+		echo '<div id="shutdown_button" class="empty"></div>';
 	}
 	else {
-		echo '<div id="debug_info" style="z-index:9999; display: none; position: absolute; left:0;top:0; width:100%;height:100%; background-color:grey;">'.$GLOBALS['debug_info'].'</div>';
-		echo '<div style="z-index:9999; position: absolute; right:0; top:0; background-color: red; width: 30px; height: 30px;" onclick="document.getElementById(\'debug_info\').style.display = \'block\'"></div>';
+		echo '<script type="text/javascript">'.file_get_contents(PALEZNO_PATH.'/functions/static/js/shutdown.js').'</script>';
+		echo '<div id="shutdown_content" style="display:none;">'.$GLOBALS['debug_info'].'</div>';
+		echo '<div id="shutdown_button" class="not_empty" onclick="showContent()"></div>';
 	}
 }
 //function caysi

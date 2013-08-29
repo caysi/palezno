@@ -1,5 +1,5 @@
 <?php
-define('PALEZNO_PATH',      __DIR__);
+define('PALEZNO_PATH',      dirname(__FILE__));
 define('FUNCTIONS_PATH',    PALEZNO_PATH.'/functions');
 define('FUNCTIONS_PREFIX', 'caysi_');
 // определяем скрит запущет из терминала или нет

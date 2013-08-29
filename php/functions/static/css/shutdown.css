@@ -1,0 +1,18 @@
+div#shutdown_button {
+	z-index: 9999;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 30px;
+	height: 30px;
+}
+div#shutdown_button.empty     { background-color: green; }
+div#shutdown_button.not_empty { background-color: red; }
+
+div#shutdown_content {
+	z-index: 9998;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: #DDDDDD;
+}
