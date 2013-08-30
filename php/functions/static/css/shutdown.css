@@ -6,8 +6,9 @@ div#shutdown_button {
 	width: 30px;
 	height: 30px;
 }
-div#shutdown_button.empty     { background-color: green; }
-div#shutdown_button.not_empty { background-color: red; }
+div#shutdown_button.empty  { background-color: green; }
+div#shutdown_button.notice { background-color: #FF9900; }
+div#shutdown_button.fatal  { background-color: red; }
 
 div#shutdown_content {
 	z-index: 9998;
@@ -16,3 +17,5 @@ div#shutdown_content {
 	top: 0;
 	background-color: #DDDDDD;
 }
+.error_handler { color: #FF9900; }
+.error_handler_fatal { color: red; }
