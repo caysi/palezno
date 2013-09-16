@@ -44,6 +44,6 @@ fi
 
 	sysctl -w net.ipv4.ip_forward=1
 #start hostapd
-	/etc/init.d/hostapd start
-	#hostapd /etc/hostapd/hostapd.conf 1>/dev/null
-	#killall dhcpd #???? -e | grep dhcpd
+	#/etc/init.d/hostapd start
+	hostapd /etc/hostapd/hostapd.conf #1>/dev/null
+	killall dhcpd #???? -e | grep dhcpd
