@@ -1,8 +1,6 @@
 div#shutdown_button {
 	z-index: 9999;
-	position: absolute;
 	right: 0;
-	top: 0;
 	width: 30px;
 	height: 30px;
 }
@@ -12,10 +10,14 @@ div#shutdown_button.fatal  { background-color: red; }
 
 div#shutdown_content {
 	z-index: 9998;
-	position: absolute;
 	left: 0;
-	top: 0;
 	background-color: #DDDDDD;
+}
+div#shutdown_button, div#shutdown_content {
+	position: absolute;
+	top: 0;
+	margin: 0;
+	padding: 0;
 }
 .error_handler { color: #FF9900; }
 .error_handler_fatal { color: red; }

@@ -3,6 +3,9 @@ error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 
+define('DEBUG_CONTENT_FILE', FUNCTIONS_PATH.'/debugContent/index.html');
+define('DEBUG_CONTENT_FILE_MODE', 0666);
+
 $GLOBALS['errorNames'] = require(FUNCTIONS_PATH.'/errorNames.php');
 
 function caysi_renderErrorMessage(&$error, $fatal=false) {
@@ -58,16 +61,30 @@ function caysi_register_shutdown_function() {
 		$buttonClass = 'fatal';
 	}
 
+	$debugContent = '';
 
-	echo F::_call('getCSS', array('shutdown'));
+	$debugContent.= F::_call('getCSS', array('shutdown'));
 	if(empty($GLOBALS['debug_info'])) {
-		echo '<div id="shutdown_button" class="empty"></div>';
+		$debugContent.= '<div id="shutdown_button" class="empty"></div>'."\n";
 	}
 	else {
 		if(empty($buttonClass)) $buttonClass = 'notice';
-		echo F::_call('getJS', array('shutdown'));
-		echo '<div id="shutdown_content" style="display:none;">'.$GLOBALS['debug_info'].'</div>';
-		echo '<div id="shutdown_button" class="'.$buttonClass.'" onclick="showContent()"></div>';
+
+		$displayContent = 'display:none;';
+		if(defined('NSD') || $buttonClass === 'fatal') $displayContent = '';
+
+		$debugContent.= F::_call('getJS', array('shutdown'))."\n";
+		$debugContent.= '<div id="shutdown_content" style="'.$displayContent.'">'.$GLOBALS['debug_info'].'</div>'."\n";
+		$debugContent.= '<div id="shutdown_button" class="'.$buttonClass.'" onclick="showContent()"></div>'."\n";
+	}
+
+	// show or save in file debug and errors
+	if(defined('NSD')) {
+		file_put_contents(DEBUG_CONTENT_FILE, $debugContent);
+		chmod(DEBUG_CONTENT_FILE, DEBUG_CONTENT_FILE_MODE);
+	}
+	else {
+		echo $debugContent;
 	}
 }
 //function caysi
