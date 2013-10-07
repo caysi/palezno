@@ -1,135 +1,143 @@
-####Отключение гостевого сеанса
-Дописать в фаил /etc/lightdm/lightdm.conf
-	allow-guest=false
+###Disable guest session
+Insertin file `/etc/lightdm/lightdm.conf` `allow-guest=false`
+***
 
-####Включение X11 Forvarding
-######Серевер
+###X11 Forvarding
+######Server
+
 	sudo apt-get install openssh-server
-Изменить /etc/ssh/sshd_config   
+
+Change `/etc/ssh/sshd_config`
+
 	X11Forwarding yes
-######Клиен
-Изменить /etc/ssh/ssh_config   
+
+######Client
+Change `/etc/ssh/ssh_config`
+
 	ForwardX11 yes
 	ForwardX11Trusted yes
+***
 
+###Return scroll bar in 12.04
 
-####Вернуть полосы прокрутки
-sudo apt-get remove overlay-scrollbar liboverlay-scrollbar3-0.2-0 liboverlay-scrollbar-0.2-0
-	Новые полосы прокрутки: 
-sudo apt-get install overlay-scrollbar liboverlay-scrollbar3-0.2-0 liboverlay-scrollbar-0.2-0
+	sudo apt-get remove overlay-scrollbar liboverlay-scrollbar3-0.2-0 liboverlay-scrollbar-0.2-0
 
-####Русские буквы tty
-sudo dpkg-reconfigure console-setup
-Выбираем UTF-8 -> VGA
-Дописать в /etc/rc.local перед exit 0
-setupcon
+#####New scroll bar:
 
-####Change layout XFCE
-apt-get istall xfce4-xkb-plugin
-Add to panel
-Select Russial(DOS)
+	sudo apt-get install overlay-scrollbar liboverlay-scrollbar3-0.2-0 liboverlay-scrollbar-0.2-0
+***
 
-####Не совпадение времени с Windows
-Change /etc/default/rcS:
-UTC=no
+###Russian letters tty
 
-####Proxy
-/etc/bash.bashrc
-export http_proxy=http://username:password@proxyserver.net:port/
-export ftp_proxy=http://username:password@proxyserver.net:port/
+	sudo dpkg-reconfigure console-setup
 
-####Mod Rewrite
-sudo ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
-sudo /etc/init.d/apache2 restart
+- Choosing UTF-8 -> VGA  
+- Insert `/etc/rc.local` before `exit 0` `setupcon`
+***
 
-####PHP cURL
-sudo apt-get install curl libcurl3 libcurl3-dev php5-curl php5-mcrypt
-sudo /etc/init.d/apache2 restart
+###Change layout XFCE
+
+	apt-get istall xfce4-xkb-plugin
+
+- Add to panel
+- Select Russial(DOS)
+***
+
+###Time in Windows and Linux
+Change `/etc/default/rcS` `UTC=no`
+***
+
+###Proxy
+`/etc/bash.bashrc`
+
+	export http_proxy=http://[username]:[password]@[proxyserver.net]:[port]/
+	export ftp_proxy=http://[username]:[password]@[proxyserver.net]:[port]/
+***
 
 ###LAMP
-sudo apt-get install lamp-server^
-sudo a2enmod rewrite
-cd /etc/apache2/sites-available/[yourhost]
 
-<VirtualHost *:80>
-	DocumentRoot /var/www/[yourhost]/trunk
-	ServerName [yourhost].local
-	ServerAlias www.[yourhost].local
-	ErrorLog /var/www/[yourhost]/logs/error_log
-	TransferLog /var/www/[yourhost]/logs/access_log
-	<Directory "/var/www/[yourhost]/trunk">
-		allow from all 
-		Options +Indexes
-	</Directory>
-</VirtualHost>
+	sudo apt-get install lamp-server^
+	sudo a2enmod rewrite
+	
+	cd /etc/apache2/sites-available/[yourhost]
 
-/etc/hosts
-sudo a2ensite [yourhost]
-sudo /etc/init.d/apache2 reload
+	<VirtualHost *:80>
+		DocumentRoot /var/www/[yourhost]/trunk
+		ServerName [yourhost].local
+		ServerAlias www.[yourhost].local
+		ErrorLog /var/www/[yourhost]/logs/error_log
+		TransferLog /var/www/[yourhost]/logs/access_log
+		<Directory "/var/www/[yourhost]/trunk">
+			allow from all 
+			Options +Indexes
+		</Directory>
+	</VirtualHost>
 
+	/etc/hosts
+	sudo a2ensite [yourhost]
+	sudo /etc/init.d/apache2 reload
+	
+####Mod Rewrite
 
+	sudo ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
+	sudo /etc/init.d/apache2 restart
 
-####Skype
-[хз](https://help.ubuntu.com/community/Skype)
-sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
-sudo apt-get update && sudo apt-get install skype
+####PHP cURL
 
-####phpStorn
-http://www.jetbrains.com/phpstorm/
-Disable autosave
-settings / General / confirm application exit : checked
-settings / General / confirm application exit : save file on frame deactivation : unchecked
-settings / General / confirm application exit : save files automatically : unchecked
-settings / Editor / Editor tabs / mark modified tabs with asterisk : checked
-Crack
-rm ~/.WebIde50/config/eval/PhpStorm5.evaluation.key
-kill all "evl" in ~/.WebIde50/config/options/options.xml <property name="evlsprt3.5" value="13" />
+	sudo apt-get install curl libcurl3 libcurl3-dev php5-curl php5-mcrypt
+	sudo /etc/init.d/apache2 restart
+***
 
+###Skype [bug](https://help.ubuntu.com/community/Skype)
 
+	sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+	sudo apt-get update && sudo apt-get install skype
+***
 
-git-core
-crome
+###Need Insall
+- crome
+- git-core
+- Libre
+- gimp
+- samba
+- vbox
+- wine
+* network-manager-openvpn
+***
 
+###Create a hidden super user [1](http://archlinux.org.ru/forum/topic/4414/?page=1) [2] (http://myubuntu.ru/faq/kak-sozdat-sudo-polzovatelya-v-ubuntu)
 
-network-manager-openvpn
+	useradd -d /home/[HIDDEN_USER] -m [HIDDEN_USER]
+	passwd [HIDDEN_USER]
+	usermod -u 999 [HIDDEN_USER]
 
-Libre
-gimp
-samba
-vbox
-wine
+	adduser [HIDDEN_USER] sudo
+***
 
+###disable powersave in tty
 
+	setterm -powersave off -blank 0
+***
 
-####Создание скрытого супер пользователя
-http://archlinux.org.ru/forum/topic/4414/?page=1
-http://myubuntu.ru/faq/kak-sozdat-sudo-polzovatelya-v-ubuntu
+###sshfs
 
-useradd -d /home/HIDDEN_USER -m HIDDEN_USER
-passwd HIDDEN_USER
-usermod -u 999 HIDDEN_USER
+	apt-get install sshfs
+	usermod -a -G fuse [user_name]
+	sshfs -o workaround=rename -p [port] [user]@[server]:[foldeer_on_server] [folder_to_mount]
+	ssh -p [port] -l [user] [server]
+	fusermount -u [folder_to_mount]
+***
 
-adduser HIDDEN_USER sudo
+###[xfce two monitors](http://www.prolinux.org/node/172) [Xfce>4.11](http://vasilisc.com/multiple-monitors-xfce)
 
-####disable powersave
-setterm -powersave off -blank 0
+	xrandr --output HDMI1 --right-of VGA1 --primary
+***
 
+###[AutoMoutn ntfs](http://ubuntolog.ru/avtomaticheskoe-montirovanie-razdelov-s-ntfs-pri-zagruzke-ubuntu.html)
 
-####sshfs
-apt-get install sshfs
-usermod -a -G fuse [user_name]
-sshfs -o workaround=rename -p 8022 baholdin@baholdin.dev.easydate.biz:/var/www/vhosts/baholdin.dev.easydate.biz/htdocs/ /mnt/cupid
-ssh -p 8022 -l baholdin baholdin.dev.easydate.biz
-fusermount -u /mnt/cupid
+	sudo blkid
+edit `/etc/fstab`:
 
-####xfce two monitors
-http://www.prolinux.org/node/172
-xrandr --output HDMI1 --right-of VGA1 --primary
-http://vasilisc.com/multiple-monitors-xfce
-
-####AutoMoutn ntfs
-http://ubuntolog.ru/avtomaticheskoe-montirovanie-razdelov-s-ntfs-pri-zagruzke-ubuntu.html
-sudo blkid  
-edit /etc/fstab  
-`UUID=<uuid>           <mount_path>    <type>  <options> <dump> <pass>`
-`UUID=363C991F3C98DAE7 /media/windows/ ntfs-3g users,defaults 0 0`
+	UUID=<uuid>           <mount_path>    <type>  <options> <dump> <pass>
+	UUID=363C991F3C98DAE7 /media/windows/ ntfs-3g users,defaults 0 0
+***
