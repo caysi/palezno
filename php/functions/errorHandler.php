@@ -3,7 +3,6 @@ error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 
-define('DEBUG_CONTENT_FILE', FUNCTIONS_PATH.'/debugContent/index.html');
 define('DEBUG_CONTENT_FILE_MODE', 0666);
 
 $GLOBALS['errorNames'] = require(FUNCTIONS_PATH.'/errorNames.php');
