@@ -59,15 +59,15 @@ function caysi_color_var_dump(&$var, $tag = 'pre', $indent=0) { //TODO color_...
 
 		foreach((array)$var as $key=>$value) {
 			if(strpos($key, '*') === 1) { //TODO тут есть не печатный 2 пробела
-				$visibility = '<b>protected</b>';
+				$visibility = '<b>#</b>';
 				$key = str_replace('*', '', $key);
 			}
 			elseif(strpos($key, $className) === 1) { //TODO тут есть не печатный 2 пробела
-				$visibility = '<b>private</b>  ';
+				$visibility = '<b>-</b>';
 				$key = str_replace($className, '', $key);
 			}
 			else
-				$visibility = '<b>public</b>   ';
+				$visibility = '<b>+</b>';
 
 			$printString.= ''.str_repeat($indentType, $indent+1).$visibility.' '.'$'.$key.' = ';
 			$printString.= caysi_color_var_dump($value, 'span', $indent+1);
