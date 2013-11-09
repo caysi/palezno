@@ -5,6 +5,8 @@
 [include]
 	path = .gitconfiguser
 
+[diff]
+	tool = vimdiff
 
 
 [color]
@@ -32,10 +34,14 @@
 [alias]
 	pus   = !git pull && git submodule update --init
 	st    = status
+
 	di    = diff
 	dis   = diff --staged			;diff файлов добавленных в коммит
+	dit   = difftool
+	dits  = difftool --staged		;difftool файлов добавленных в коммит
 	diw   = diff --word-diff		;diff показывает изменненые слова, а не строки
 	diwc  = diff --word-diff=color	;=diw без скобок, отличие только в цвете
+
 	lo    = log
 	los   = log --stat				;показывает затронутые файлы
 			;log в красивом виде, в отдну строку
