@@ -39,8 +39,9 @@
 	dis   = diff --staged			;diff файлов добавленных в коммит
 	dit   = difftool -y
 	dits  = difftool -y --staged		;difftool файлов добавленных в коммит
-	diw   = diff --word-diff		;diff показывает изменненые слова, а не строки
-	diwc  = diff --word-diff=color	;=diw без скобок, отличие только в цвете
+	diw   = diff --word-diff			;diff показывает изменненые слова, а не строки
+	diwc  = diff --word-diff=color		;=diw без скобок, отличие только в цвете
+	diwc  = diff --word-diff=porcelain	;перекидывает на строки если в одной строке
 
 	lo    = log
 	los   = log --stat				;показывает затронутые файлы
