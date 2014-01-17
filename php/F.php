@@ -7,7 +7,7 @@ define('DEBUG_CONTENT_FILE',FUNCTIONS_PATH.'/debugContent/index.html'); //TODO �
 // определяем скрит запущет из терминала или нет
 if(PHP_SAPI == 'cli'){ define('THIS_TERMINAL', TRUE); } else { define('THIS_TERMINAL', FALSE); }
 
-if($_SERVER['REQUEST_URI'] === '/showDebugContent') {
+if(isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] === '/showDebugContent') {
 	if(file_exists(DEBUG_CONTENT_FILE)) {
 		echo file_get_contents(DEBUG_CONTENT_FILE);
 	}

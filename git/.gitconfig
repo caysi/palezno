@@ -46,13 +46,13 @@
 	lo    = log
 	los   = log --stat				;показывает затронутые файлы
 			;log в красивом виде, в отдну строку
-	loo   = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"'
+	loo   = log --pretty=format:'%C(yellow)%h%C(reset) %aD %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"'
 			;=loo + график
-	loog  = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --graph
+	loog  = log --pretty=format:'%C(yellow)%h%C(reset) %aD %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --graph
 
 			;=loo и =loog только дата показывается в локоной временой зоне
-	lloo  = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local
-	lloog = log --pretty=format:'%C(yellow)%h%C(reset) %ad %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local --graph
+	lloo  = log --pretty=format:'%C(yellow)%h%C(reset) %aD %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local
+	lloog = log --pretty=format:'%C(yellow)%h%C(reset) %aD %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local --graph
 	co    = checkout
 	br    = branch
 ;	ci    = commit

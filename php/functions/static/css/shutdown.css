@@ -13,6 +13,10 @@ div#shutdown_content {
 	left: 0;
 	background-color: #DDDDDD;
 }
+div#shutdown_content * {
+	padding: 0 1px;
+	margin: 0;
+}
 div#shutdown_button, div#shutdown_content {
 	position: absolute;
 	top: 0;

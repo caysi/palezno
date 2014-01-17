@@ -1,0 +1,43 @@
+#!/bin/bash
+TEXT=(\
+	''\
+	'1;'\
+	'30;'\
+	'1;30;'\
+	'31;'\
+	'1;31;'\
+	'32;'\
+	'1;32;'\
+	'33;'\
+	'1;33;'\
+	'34;'\
+	'1;34;'\
+	'35;'\
+	'1;35;'\
+	'36;'\
+	'1;36;'\
+	'37;'\
+	'1;37;'\
+)
+FONE=('' '40' '41' '42' '43' '44' '45' '46' '47')
+
+
+for text in ${TEXT[*]}
+do
+	#echo -n $text' '
+
+	for fone in ${FONE[*]}
+	do
+		str="$text""$fone"
+		estr=$str
+		if [ ${#str} == 5 ];
+		then
+			estr=' '$estr' '
+		fi
+
+		echo -en " \033["$str"m "$estr" \033[m"
+		#echo ${#str}
+	done
+
+	echo -en "\n"
+done
