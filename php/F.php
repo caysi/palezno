@@ -1,4 +1,5 @@
 <?php
+define('NSD',               true);
 define('PALEZNO_PATH',      dirname(__FILE__));
 define('FUNCTIONS_PATH',    PALEZNO_PATH.'/functions');
 define('STATIC_PATH',       FUNCTIONS_PATH.'/static');

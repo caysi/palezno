@@ -1,0 +1,65 @@
+#!/bin/bash
+
+COM='find'
+
+
+DIRS=(\
+	'./'\
+)
+
+#PATHS=(\
+#)
+PATHS_NO=(\
+	'.git/'\
+	'.idea/'\
+	'images/'\
+	'cache/'\
+	'logs/'\
+	'tools/db_pma/'\
+)
+
+#NAME=(\
+#)
+NAME_NO=(\
+	'*.csv'\
+	'*.log'\
+	'*.mo'\
+	'*.txt'\
+	'*.min.js'\
+)
+
+TYPE='f'
+
+GREP_DEF_PARAMS='--color -n'
+
+for item in ${DIRS[*]}; do
+	COM=$COM' '$item
+done
+
+for item in ${NAME_NO[*]}; do
+	COM=$COM" ! -name '"${item}"'"
+done
+for item in ${PATHS_NO[*]}; do
+	for dir in ${DIRS[*]}; do
+		COM=$COM' ! -path "'$dir$item'*"'
+	done
+done
+
+if [ "$1" ]; then
+	FIND_PARAMS=' '$1
+else
+	FIND_PARAMS=''
+fi
+
+if [ "$2" ]; then
+	GREP_PARAMS=' '$2
+else
+	GREP_PARAMS=''
+fi
+
+COM=$COM" -type f$FIND_PARAMS | xargs grep $GREP_DEF_PARAMS$GREP_PARAMS '$3'"
+echo -e "\033[1;42m\n"$COM"\n\033[0m"
+
+eval $COM
+
+echo -e ""
