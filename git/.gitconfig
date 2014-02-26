@@ -1,6 +1,6 @@
 [core]
 	autocrlf = input
-	safecrlf = true
+	safecrlf = warn
     ;pager    = less -A
 [include]
 	path = .gitconfiguser
