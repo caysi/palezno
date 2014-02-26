@@ -2,8 +2,11 @@
 
 function caysi_renderBacktrace(&$backtrace, $killFuncName=NULL) {
 	$count = 0;
-	$libDir = dirname(dirname(dirname(__FILE__)));
+	$libDir = PALEZNO_PATH;
+
 	foreach($backtrace as $key=>&$bt) {
+		if(!isset($bt['file'])) { $bt['file'] = ':('; }
+		if(!isset($bt['line'])) { $bt['line'] = ':('; }
 		if(strpos($bt['file'], $libDir.'/') !== false) {
 			$count++;
 			if(isset($backtrace[$key+1]) && strpos($backtrace[$key+1]['file'], $libDir.'/') === false) {
