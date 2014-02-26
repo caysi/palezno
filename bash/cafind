@@ -11,21 +11,22 @@ DIRS=(\
 #)
 PATHS_NO=(\
 	'.git/'\
+	'.svn/'\
 	'.idea/'\
-	'images/'\
-	'cache/'\
-	'logs/'\
-	'tools/db_pma/'\
+#	'images/'\
+#	'cache/'\
+#	'logs/'\
+#	'tools/db_pma/'\
 )
 
 #NAME=(\
 #)
 NAME_NO=(\
-	'*.csv'\
-	'*.log'\
-	'*.mo'\
-	'*.txt'\
-	'*.min.js'\
+#	'*.csv'\
+#	'*.log'\
+#	'*.mo'\
+#	'*.txt'\
+#	'*.min.js'\
 )
 
 TYPE='f'
@@ -57,7 +58,7 @@ else
 	GREP_PARAMS=''
 fi
 
-COM=$COM" -type f$FIND_PARAMS | xargs grep $GREP_DEF_PARAMS$GREP_PARAMS '$3'"
+COM=$COM" -type f$FIND_PARAMS | sed -e 's/ /\\\ /g' | xargs grep $GREP_DEF_PARAMS$GREP_PARAMS '$3'"
 echo -e "\033[1;42m\n"$COM"\n\033[0m"
 
 eval $COM
