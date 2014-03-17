@@ -204,3 +204,20 @@ iabbrev tm echo 'File: '.__FILE__.', line: '.__LINE__."\n<br>"; //TODO DELETE
 "                 GUI
 "=====================================================
 "set guioptions-=T		" Скрыть панель в gui версии ибо она не нужна
+
+
+
+
+" XML folding
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+
+" HTML folding
+"syn region HTMLDivFold start="<div>" end="</div>" transparent fold
+"let html_fold=1
+"set foldmethod=syntax
+"setlocal foldmethod=marker foldmarker=<!--,-->
+
+" JS folding
+let javaScript_fold=1
+au FileType javascript setlocal foldmethod=syntax
