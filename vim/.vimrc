@@ -85,15 +85,15 @@ endif
 ":helptags $HOME/.vim/doc
 
 " TODO Убрать дублирование
-if &term =~ "xterm" && filewritable($HOME."/.config/xfce4/terminal/terminalrc")
-	au InsertEnter * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_IBEAM/' ~/.config/xfce4/terminal/terminalrc"
-	au InsertLeave * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
-	au VimLeave * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
-elseif &term =~ "xterm" && filewritable($HOME."/.config/Terminal/terminalrc")
-	au InsertEnter * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_IBEAM/' ~/.config/Terminal/terminalrc"
-	au InsertLeave * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/Terminal/terminalrc"
-	au VimLeave * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/Terminal/terminalrc"
-endif
+"if &term =~ "xterm" && filewritable($HOME."/.config/xfce4/terminal/terminalrc")
+"	au InsertEnter * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_IBEAM/' ~/.config/xfce4/terminal/terminalrc"
+"	au InsertLeave * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
+"	au VimLeave * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/xfce4/terminal/terminalrc"
+"elseif &term =~ "xterm" && filewritable($HOME."/.config/Terminal/terminalrc")
+"	au InsertEnter * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_IBEAM/' ~/.config/Terminal/terminalrc"
+"	au InsertLeave * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/Terminal/terminalrc"
+"	au VimLeave * silent execute "!sed -i 's/MiscCursorShape=.*$/MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK/' ~/.config/Terminal/terminalrc"
+"endif
 
 
 "========================================================
