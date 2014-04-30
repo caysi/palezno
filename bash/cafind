@@ -13,21 +13,22 @@ PATHS_NO=(\
 	'.git/'\
 	'.svn/'\
 	'.idea/'\
+	'tmp/'\
+)
 #	'images/'\
 #	'cache/'\
 #	'logs/'\
 #	'tools/db_pma/'\
-)
 
 #NAME=(\
 #)
 NAME_NO=(\
+)
 #	'*.csv'\
 #	'*.log'\
 #	'*.mo'\
 #	'*.txt'\
 #	'*.min.js'\
-)
 
 TYPE='f'
 
