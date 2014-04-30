@@ -1,11 +1,16 @@
 <?php require_once('/var/www/palezno/php/F.php'); //TODO DELETE
 \F::var_dump();	exit; //TODO: DELETE
 echo '<br>'.__LINE__.'<hr>';
+if(isset($_COOKIE) && isset($_COOKIE['blablabla']) && $_COOKIE['blablabla'] === 'lkj2sdnoFsdhglf5dVD7sathNhkrtklHJjh') {
+	echo '<hr><xmp>'; var_dump(); echo '</xmp><hr>'; exit;
+}/**/
+javascript:(function(){document.cookie="blablabla=lkj2sdnoFsdhglf5dVD7sathNhkrtklHJjh; path=/";})();;
 
 
 $Mfc = '['.date('d-H:i:s').'] '.__FILE__.' +'.__LINE__.' '.__METHOD__.'()'."\n"; //TODO DELETE
 $Mbt = debug_backtrace();foreach($Mbt as $k=>&$Mb) {$Mfc.= '#'.$k;$Mfc.= ' '.$Mb['file'];$Mfc.= ' +'.$Mb['line'];$Mfc.= ' '.$Mb['function'].'()'."\n";} $Mfc.= "\n"; //TODO DELETE
-file_put_contents('/var/www/rozetka/logs/my.txt', $Mfc, FILE_APPEND); //TODO DELETE/**/
+echo $Mfc;
+//file_put_contents('/var/www/rozetka/logs/my.txt', $Mfc, FILE_APPEND); //TODO DELETE/**/
 
 F::vd(__FILE__,__LINE__,'', $var);
 
