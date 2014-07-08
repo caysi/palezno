@@ -102,7 +102,8 @@ Change `/etc/default/rcS` `UTC=no`
 - samba
 - vbox
 - wine
-* network-manager-openvpn
+- network-manager-openvpn
+- htop
 ***
 
 ###Create a hidden super user [1](http://archlinux.org.ru/forum/topic/4414/?page=1) [2] (http://myubuntu.ru/faq/kak-sozdat-sudo-polzovatelya-v-ubuntu)
