@@ -1,3 +1,4 @@
+var scriptName = 'dev';
 var tagId = 'include_script';
 var head = document.getElementsByTagName('HEAD')[0];
 var nevJs = document.createElement('script');
