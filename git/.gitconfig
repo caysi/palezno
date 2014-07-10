@@ -1,7 +1,7 @@
 [core]
 	autocrlf = input
 	safecrlf = warn
-    ;pager    = less -A
+    pager    = "less -A"
 [include]
 	path = .gitconfiguser
 
@@ -10,7 +10,7 @@
 
 
 [color]
-;	ui     = true
+	ui     = always
 	branch = auto
 	diff   = auto
 	status = auto
@@ -32,8 +32,10 @@
 	untracked = cyan
 
 [alias]
+	fe    = fetch
 	pus   = !git pull && git submodule update --init
 	st    = status
+	mef   = merge --no-ff
 
 	di    = diff
 	dis   = diff --staged			;diff файлов добавленных в коммит
@@ -42,17 +44,18 @@
 	diw   = diff --word-diff			;diff показывает изменненые слова, а не строки
 	diwc  = diff --word-diff=color		;=diw без скобок, отличие только в цвете
 	diwp  = diff --word-diff=porcelain	;перекидывает на строки если в одной строке
+	dim   = diff origin/master...
 
 	lo    = log
 	los   = log --stat				;показывает затронутые файлы
 			;log в красивом виде, в отдну строку
-	loo   = log --pretty=format:'%C(yellow)%h%C(reset) %aD %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"'
+	loo   = log --pretty=format:'%C(yellow)%h%C(reset) %ai %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"'
 			;=loo + график
-	loog  = log --pretty=format:'%C(yellow)%h%C(reset) %aD %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --graph
+	loog  = log --pretty=format:'%C(yellow)%h%C(reset) %ai %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --graph
 
 			;=loo и =loog только дата показывается в локоной временой зоне
-	lloo  = log --pretty=format:'%C(yellow)%h%C(reset) %aD %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local
-	lloog = log --pretty=format:'%C(yellow)%h%C(reset) %aD %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local --graph
+	lloo  = log --pretty=format:'%C(yellow)%h%C(reset) %ai %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local
+	lloog = log --pretty=format:'%C(yellow)%h%C(reset) %ai %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local --graph
 	co    = checkout
 	br    = branch
 ;	ci    = commit
