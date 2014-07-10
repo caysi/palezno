@@ -8,6 +8,8 @@
 #stty echo
 #printf "\n"
 
+FOLDER=`echo -n $1 | sed "s/[@\.\ ]/_/g"`
+
 if [ $2 ]
 then
 	KEY="-i $2 "
@@ -16,9 +18,10 @@ else
 	KEY=""
 	KEYFS=""
 fi
-if [ ! -d $HOME/sshfs/$1 ]
+
+if [ ! -d $HOME/sshfs/$FOLDER ]
 then
-	FSDIR=$HOME/sshfs/$1
+	FSDIR=$HOME/sshfs/$FOLDER
 	mkdir $FSDIR
 	sshfs $KEYFS$1:/ $FSDIR
 
