@@ -222,3 +222,6 @@ au FileType xml setlocal foldmethod=syntax
 " JS folding
 let javaScript_fold=1
 au FileType javascript setlocal foldmethod=syntax
+
+" Show hidden
+let NERDTreeShowHidden=1
