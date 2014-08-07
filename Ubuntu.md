@@ -86,6 +86,9 @@ Change `/etc/default/rcS` `UTC=no`
 
 	sudo apt-get install curl libcurl3 libcurl3-dev php5-curl php5-mcrypt
 	sudo /etc/init.d/apache2 restart
+
+####Nginx + Apache
+	sudo apt-get install nginx
 ***
 
 ###Skype [bug](https://help.ubuntu.com/community/Skype)
@@ -95,8 +98,10 @@ Change `/etc/default/rcS` `UTC=no`
 ***
 
 ###Need Insall
-- crome
 - git-core
+- vim
+- vim-gnome
+- chromium-browser
 - Libre
 - gimp
 - samba
@@ -104,6 +109,7 @@ Change `/etc/default/rcS` `UTC=no`
 - wine
 - network-manager-openvpn
 - htop
+
 ***
 
 ###Create a hidden super user [1](http://archlinux.org.ru/forum/topic/4414/?page=1) [2] (http://myubuntu.ru/faq/kak-sozdat-sudo-polzovatelya-v-ubuntu)
