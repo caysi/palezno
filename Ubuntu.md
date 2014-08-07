@@ -102,6 +102,13 @@ Change `/etc/default/rcS` `UTC=no`
 	}
 	root   /var/www/all/$vhost; # конень сайта определяем автоматически
 	index index.php index.html index.htm; # в каком порядке искать индексные файлы
+######PHP-FPM
+`/etc/php5/fpm/php.ini` `cgi.fix_pathinfo = 0`  
+`/etc/php5/fpm/pool.d/www.conf` `security.limit_extensions = .php .php3 .php4 .php5`
+
+- change users if need
+- reboot services
+
 ***
 
 ###Skype [bug](https://help.ubuntu.com/community/Skype)
