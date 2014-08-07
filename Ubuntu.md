@@ -87,8 +87,21 @@ Change `/etc/default/rcS` `UTC=no`
 	sudo apt-get install curl libcurl3 libcurl3-dev php5-curl php5-mcrypt
 	sudo /etc/init.d/apache2 restart
 
-####Nginx + Apache
-	sudo apt-get install nginx
+####Nginx + Apache or PHP-FPM
+	sudo apt-get install nginx php5-fpm
+`/etc/apache2/ports.conf`
+######Change ports
+	80  => 8080
+	433 => 8433
+######Nginx one config to many proects
+	server_name _;  # хитрый ключик, обозначающий, что этот конфиг применим для любого сайта
+	set $vhost $host;  # В sathost будет лежать имя сайта. Так же должна называться директрия с сайтом
+	# убираем www
+	if ( $host ~ ^(www\.)?(.+)\.local$ ) {
+		set $vhost $2;
+	}
+	root   /var/www/all/$vhost; # конень сайта определяем автоматически
+	index index.php index.html index.htm; # в каком порядке искать индексные файлы
 ***
 
 ###Skype [bug](https://help.ubuntu.com/community/Skype)
