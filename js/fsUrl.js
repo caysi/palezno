@@ -4,9 +4,14 @@ var body = document.getElementsByTagName('BODY')[0];
 var hostName = location.protocol+'//'+location.host;
 var playList = FS_APLAYER_CONFIG.playlist;
 var content = '';
+
+content+= '<table>';
 for(var i in playList) {
-    content+= '<h1>'+i+') '+hostName+playList[i].url+'</h1>';
+	content+= '<tr>';
+	content+= '<td>'+hostName+playList[i].url+'</td>';
+	content+= '</tr>';
 }
+content+= '</table>';
 body.innerHTML = content;
 body.style.backgroundColor = "white";
 body.style.backgroundImage = "none";
