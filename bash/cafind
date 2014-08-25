@@ -32,7 +32,7 @@ NAME_NO=(\
 
 TYPE='f'
 
-GREP_DEF_PARAMS='--color -n'
+GREP_DEF_PARAMS='--color -n -I'
 
 for item in ${DIRS[*]}; do
 	COM=$COM' '$item
@@ -59,8 +59,13 @@ else
 	GREP_PARAMS=''
 fi
 
-COM=$COM" -type f$FIND_PARAMS | sed -e 's/ /\\\ /g' | xargs grep $GREP_DEF_PARAMS$GREP_PARAMS '$3'"
-echo -e "\033[1;42m\n"$COM"\n\033[0m"
+COM=$COM" -type f$FIND_PARAMS"
+COM=$COM" | sed -e 's/ /\\\ /g'"
+COM=$COM" | xargs grep $GREP_DEF_PARAMS$GREP_PARAMS '$3'"
+
+echo -e "\033[1;42m"
+echo $COM
+echo -e "\033[0m"
 
 eval $COM
 
