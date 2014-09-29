@@ -1,0 +1,33 @@
+#!/bin/bash
+
+program=('openssh-server')
+program=(${program[@]} 'vim')
+program=(${program[@]} 'git-core')
+program=(${program[@]} 'htop')
+
+#lamp-server^
+program=(${program[@]} 'apache2')
+program=(${program[@]} 'mysql-server')
+program=(${program[@]} 'php5')
+program=(${program[@]} 'php5-cli')
+program=(${program[@]} 'php5-mysql')
+program=(${program[@]} 'libapache2-mod-php5')
+
+program=(${program[@]} 'nginx')
+program=(${program[@]} 'php5-fpm')
+program=(${program[@]} 'php5-gd')
+program=(${program[@]} 'php5-curl')
+
+
+
+
+program=(${program[@]} 'vim-gnome')
+program=(${program[@]} 'chromium-browser')
+#program=(${program[@]} 'Libre')
+#program=(${program[@]} 'gimp')
+#program=(${program[@]} 'samba')
+#program=(${program[@]} 'vbox')
+program=(${program[@]} 'wine')
+program=(${program[@]} 'network-manager-openvpn')
+
+echo ${program[@]}
