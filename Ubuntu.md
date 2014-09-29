@@ -168,3 +168,6 @@ edit `/etc/fstab`:
 	UUID=<uuid>           <mount_path>    <type>  <options> <dump> <pass>
 	UUID=363C991F3C98DAE7 /media/windows/ ntfs-3g users,defaults 0 0
 ***
+
+###[VBox boot from usb](http://www.upubuntu.com/2012/11/how-to-configure-virtualbox-42x-to-boot.html)
+	VBoxManage internalcommands createrawvmdk -filename ~/.VirtualBox/usb.vmdk -rawdisk /dev/sdb1
