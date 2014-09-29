@@ -4,9 +4,17 @@ echo '<br>'.__LINE__.'<hr>';
 if(isset($_COOKIE) && isset($_COOKIE['blablabla']) && $_COOKIE['blablabla'] === 'lkj2sdnoFsdhglf5dVD7sathNhkrtklHJjh') {
 	echo '<hr><xmp>'; var_dump(); echo '</xmp><hr>'; exit;
 }/**/
+?>
 javascript:(function(){document.cookie="blablabla=lkj2sdnoFsdhglf5dVD7sathNhkrtklHJjh; path=/";})();;
+<script>
 
+console.log();
+debugger;
+console.trace();
 
+</script>
+
+<?php
 $Mfc = '['.date('d-H:i:s').'] '.__FILE__.' +'.__LINE__.' '.__METHOD__.'()'."\n"; //TODO DELETE
 $Mbt = debug_backtrace();foreach($Mbt as $k=>&$Mb) {$Mfc.= '#'.$k;$Mfc.= ' '.$Mb['file'];$Mfc.= ' +'.$Mb['line'];$Mfc.= ' '.$Mb['function'].'()'."\n";} $Mfc.= "\n"; //TODO DELETE
 echo $Mfc;
@@ -18,7 +26,7 @@ F::vd(__FILE__,__LINE__,'', $var);
 
     echo '<hr><xmp>';	var_dump();	echo '</xmp><hr>';	exit; //TODO: DELETE
     foreach($params as $p){$begin=strpos($query,'?');$c=substr($query,0,$begin).'<span style="color:red;">'.$p.'</span>';$query=$c.substr($query, $begin+1);}echo '<pre>'.$query.'</pre><hr>';return;//TODO DELETE
-
+?>
 
 	{php}	$var = $this->get_template_vars(''); var_dump($var);	exit;	{/php}{**}
 
