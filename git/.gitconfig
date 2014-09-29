@@ -2,6 +2,7 @@
 	autocrlf = input
 	safecrlf = warn
     pager    = "less -A"
+#	pager    = "vim -u /var/www/palezno/vim/vimrc.more -R -"
 [include]
 	path = .gitconfiguser
 
@@ -36,7 +37,8 @@
 	pus   = !git pull && git submodule update --init
 	st    = status
 	re    = rebase
-	mef   = merge --no-ff
+	mef   = merge --no-ff --no-edit
+	mefe  = merge --no-ff
 
 	di    = diff
 	dis   = diff --staged			;diff файлов добавленных в коммит
