@@ -1,33 +1,57 @@
 #!/bin/bash
+if [ "$(id -u)" != "0" ]; then
+	echo -e '\033[30;41m''Run this script as root''\033[0m'
+	#exit
+fi
 
-program=('openssh-server')
-program=(${program[@]} 'vim')
-program=(${program[@]} 'git-core')
-program=(${program[@]} 'htop')
+read -p "Install program? (y/n) " installProgram
+
+userId=1000
+user=$(cat /etc/passwd | grep $userId | sed -e 's/^\([a-zA-Z]\+\).*\([0-9]\{4\}\+\).*:\([\/a-zA-Z]\+\):.*/\1 \2 \3/g')
+
+
+
+programs=('openssh-server')
+programs=(${programs[@]} 'vim')
+programs=(${programs[@]} 'git-core')
+programs=(${programs[@]} 'htop')
 
 #lamp-server^
-program=(${program[@]} 'apache2')
-program=(${program[@]} 'mysql-server')
-program=(${program[@]} 'php5')
-program=(${program[@]} 'php5-cli')
-program=(${program[@]} 'php5-mysql')
-program=(${program[@]} 'libapache2-mod-php5')
+programs=(${programs[@]} 'apache2')
+programs=(${programs[@]} 'mysql-server')
+programs=(${programs[@]} 'php5')
+programs=(${programs[@]} 'php5-cli')
+programs=(${programs[@]} 'php5-mysql')
+programs=(${programs[@]} 'libapache2-mod-php5')
 
-program=(${program[@]} 'nginx')
-program=(${program[@]} 'php5-fpm')
-program=(${program[@]} 'php5-gd')
-program=(${program[@]} 'php5-curl')
+#nginx php-fpm
+programs=(${programs[@]} 'nginx')
+programs=(${programs[@]} 'php5-fpm')
+
+#php curl ...
+programs=(${programs[@]} 'php5-gd')
+programs=(${programs[@]} 'php5-curl')
 
 
 
 
-program=(${program[@]} 'vim-gnome')
-program=(${program[@]} 'chromium-browser')
-#program=(${program[@]} 'Libre')
-#program=(${program[@]} 'gimp')
-#program=(${program[@]} 'samba')
-#program=(${program[@]} 'vbox')
-program=(${program[@]} 'wine')
-program=(${program[@]} 'network-manager-openvpn')
+programs=(${programs[@]} 'vim-gnome')
+programs=(${programs[@]} 'chromium-browser')
+#programs=(${programs[@]} 'Libre')
+#programs=(${programs[@]} 'gimp')
+#programs=(${programs[@]} 'samba')
+#programs=(${programs[@]} 'vbox')
+programs=(${programs[@]} 'wine')
+programs=(${programs[@]} 'network-manager-openvpn')
 
-echo ${program[@]}
+for program in ${programs[*]}; do
+	if [ "$(dpkg -s $program 2>&1 | grep Status)" = '' ]; then
+		echo -e '\033[1;42m''Install '$program'\033[0m'
+	else
+		echo -e '\033[32;47m''Installed '$program'\033[0m'
+	fi
+done
+
+
+
+
