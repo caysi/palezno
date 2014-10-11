@@ -68,3 +68,4 @@
 	showm = !sh -c 'git diff $1^1 $1' -		;diff мержа
 	showms= !sh -c 'git diff $1^1 $1 --stat' -;=showm покажет только затронутые файлы
 	coma  = !sh -c 'git add -A && git commit -m \"$(date +"%y.%d.%m_%H:%M:%S")\"' -
+	comam = !sh -c 'git add -A && git commit -m \"$1\"' -
