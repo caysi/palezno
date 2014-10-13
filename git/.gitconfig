@@ -56,6 +56,8 @@
 	loo   = log --pretty=format:'%C(yellow)%h%C(reset) %ai %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"'
 			;=loo + график
 	loog  = log --pretty=format:'%C(yellow)%h%C(reset) %ai %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --graph
+	loos  = log --pretty=format:'%C(yellow)%h%C(reset) %ai %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --stat
+	loogs = log --pretty=format:'%C(yellow)%h%C(reset) %ai %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --graph --stat
 
 			;=loo и =loog только дата показывается в локоной временой зоне
 	lloo  = log --pretty=format:'%C(yellow)%h%C(reset) %ai %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local
@@ -65,4 +67,6 @@
 ;	ci    = commit
 	sd    = !sh -c 'git status && git diff' -
 	showm = !sh -c 'git diff $1^1 $1' -		;diff мержа
-	showms= !sh -c'git diff $1^1 $1 --stat' -;=showm покажет только затронутые файлы
+	showms= !sh -c 'git diff $1^1 $1 --stat' -;=showm покажет только затронутые файлы
+	coma  = !sh -c 'git add -A && git commit -m \"$(date +"%y.%d.%m_%H:%M:%S")\"' -
+	comam = !sh -c 'git add -A && git commit -m \"$1\"' -
