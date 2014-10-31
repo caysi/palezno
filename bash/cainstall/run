@@ -31,12 +31,14 @@ programs=(${programs[@]} 'php5-fpm')
 #php curl ...
 programs=(${programs[@]} 'php5-gd')
 programs=(${programs[@]} 'php5-curl')
+programs=(${programs[@]} 'php5-geoip')
 
 
 
 
 programs=(${programs[@]} 'vim-gnome')
 programs=(${programs[@]} 'chromium-browser')
+#programs=(${programs[@]} 'pepperflashplugin-nonfree')
 #programs=(${programs[@]} 'Libre')
 #programs=(${programs[@]} 'gimp')
 #programs=(${programs[@]} 'samba')

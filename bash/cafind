@@ -47,21 +47,21 @@ for item in ${PATHS_NO[*]}; do
 	done
 done
 
-if [ "$1" ]; then
-	FIND_PARAMS=' '$1
+if [ "$2" ]; then
+	FIND_PARAMS=' '$2
 else
 	FIND_PARAMS=''
 fi
 
-if [ "$2" ]; then
-	GREP_PARAMS=' '$2
+if [ "$3" ]; then
+	GREP_PARAMS=' '$3
 else
 	GREP_PARAMS=''
 fi
 
 COM=$COM" -type f$FIND_PARAMS"
 COM=$COM" | sed -e 's/ /\\\ /g'"
-COM=$COM" | xargs grep $GREP_DEF_PARAMS$GREP_PARAMS '$3'"
+COM=$COM" | xargs grep $GREP_DEF_PARAMS$GREP_PARAMS '$1'"
 
 echo -e "\033[1;42m"
 echo $COM

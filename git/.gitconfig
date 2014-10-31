@@ -39,7 +39,8 @@
 	re    = rebase
 	mef   = merge --no-ff --no-edit
 	mefe  = merge --no-ff
-	resh  = reset --hard
+	rsha  = reset --hard
+	rshe  = reset HEAD
 
 	di    = diff
 	dis   = diff --staged			;diff файлов добавленных в коммит
