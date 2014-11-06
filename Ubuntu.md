@@ -171,3 +171,7 @@ edit `/etc/fstab`:
 
 ###[VBox boot from usb](http://www.upubuntu.com/2012/11/how-to-configure-virtualbox-42x-to-boot.html)
 	VBoxManage internalcommands createrawvmdk -filename ~/.VirtualBox/usb.vmdk -rawdisk /dev/sdb1
+
+###[Return screensaver](http://askubuntu.com/questions/450443/light-locker-stops-background-activities-eg-music-playback-when-screen-is-loc)
+	sudo apt-get purge light-locker light-locker-settings
+	sudo apt-get install xscreensaver
