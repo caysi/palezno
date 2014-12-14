@@ -4,16 +4,16 @@ if [ "$(id -u)" != "0" ]; then
 	#exit
 fi
 
-read -p "Install program? (y/n) " installProgram
+#read -p "Install program? (y/n) " installProgram
 
 userId=1000
 user=$(cat /etc/passwd | grep $userId | sed -e 's/^\([a-zA-Z]\+\).*\([0-9]\{4\}\+\).*:\([\/a-zA-Z]\+\):.*/\1 \2 \3/g')
 
 
 
-programs=('openssh-server')
+programs=('git')
+programs=(${programs[@]} 'openssh-server')
 programs=(${programs[@]} 'vim')
-programs=(${programs[@]} 'git-core')
 programs=(${programs[@]} 'htop')
 
 #lamp-server^
@@ -32,6 +32,7 @@ programs=(${programs[@]} 'php5-fpm')
 programs=(${programs[@]} 'php5-gd')
 programs=(${programs[@]} 'php5-curl')
 programs=(${programs[@]} 'php5-geoip')
+programs=(${programs[@]} 'php5-mcrypt')
 
 
 
