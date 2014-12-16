@@ -10,7 +10,6 @@ userId=1000
 user=$(cat /etc/passwd | grep $userId | sed -e 's/^\([a-zA-Z]\+\).*\([0-9]\{4\}\+\).*:\([\/a-zA-Z]\+\):.*/\1 \2 \3/g')
 
 
-
 programs=('git')
 programs=(${programs[@]} 'openssh-server')
 programs=(${programs[@]} 'vim')
@@ -46,6 +45,7 @@ programs=(${programs[@]} 'chromium-browser')
 #programs=(${programs[@]} 'vbox')
 programs=(${programs[@]} 'wine')
 programs=(${programs[@]} 'network-manager-openvpn')
+programs=(${programs[@]} 'xscreensaver')
 
 for program in ${programs[*]}; do
 	if [ "$(dpkg -s $program 2>&1 | grep Status)" = '' ]; then
