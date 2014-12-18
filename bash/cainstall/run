@@ -47,6 +47,7 @@ programs=(${programs[@]} 'wine')
 programs=(${programs[@]} 'network-manager-openvpn')
 programs=(${programs[@]} 'xscreensaver')
 programs=(${programs[@]} 'sshfs')
+programs=(${programs[@]} 'skype')
 
 for program in ${programs[*]}; do
 	if [ "$(dpkg -s $program 2>&1 | grep Status)" = '' ]; then
