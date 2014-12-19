@@ -12,8 +12,11 @@ user=$(cat /etc/passwd | grep $userId | sed -e 's/^\([a-zA-Z]\+\).*\([0-9]\{4\}\
 
 programs=('git')
 programs=(${programs[@]} 'openssh-server')
+programs=(${programs[@]} 'sshfs')
 programs=(${programs[@]} 'vim')
 programs=(${programs[@]} 'htop')
+programs=(${programs[@]} 'screen')
+programs=(${programs[@]} 'curl')
 
 #lamp-server^
 programs=(${programs[@]} 'apache2')
@@ -46,8 +49,8 @@ programs=(${programs[@]} 'chromium-browser')
 programs=(${programs[@]} 'wine')
 programs=(${programs[@]} 'network-manager-openvpn')
 programs=(${programs[@]} 'xscreensaver')
-programs=(${programs[@]} 'sshfs')
 programs=(${programs[@]} 'skype')
+programs=(${programs[@]} 'smplayer')
 
 for program in ${programs[*]}; do
 	if [ "$(dpkg -s $program 2>&1 | grep Status)" = '' ]; then
