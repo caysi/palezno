@@ -1,0 +1,6 @@
+#!/bin/bash
+ln -s /var/www/palezno/vim/.vimrc ~/.vimrc
+ln -s /var/www/palezno/vim/.vim ~/.vim
+
+ln -s /var/www/palezno/git/.gitconfiguser ~/.gitconfiguser
+ln -s /var/www/palezno/git/.gitconfig ~/.gitconfig
