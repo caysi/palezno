@@ -49,6 +49,11 @@ programs=(${programs[@]} 'wine')
 programs=(${programs[@]} 'network-manager-openvpn')
 programs=(${programs[@]} 'xscreensaver')
 programs=(${programs[@]} 'smplayer')
+programs=(${programs[@]} 'baobab')
+programs=(${programs[@]} 'gnome-disk-utility')
+programs=(${programs[@]} 'unar')
+
+
 programs=(${programs[@]} 'virtualbox')
 programs=(${programs[@]} 'skype')
 
