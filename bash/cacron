@@ -1,2 +1,0 @@
-50 * * * * export DISPLAY=:0.0 && export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep xfce4-session)/environ|cut -d= -f2-) && notify-send "Life" "====================== <b>STOP</b> ========================="
-0 * * * * export DISPLAY=:0.0 && export DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep xfce4-session)/environ|cut -d= -f2-) && notify-send "Life" "____________ begin ____________"
