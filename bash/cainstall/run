@@ -36,6 +36,10 @@ programs=(${programs[@]} 'php5-curl')
 programs=(${programs[@]} 'php5-geoip')
 programs=(${programs[@]} 'php5-mcrypt')
 
+#php debug
+programs=(${programs[@]} 'php5-xdebug')
+programs=(${programs[@]} 'php5-xhprof')
+
 
 
 
@@ -43,12 +47,14 @@ programs=(${programs[@]} 'vim-gnome')
 programs=(${programs[@]} 'chromium-browser')
 #programs=(${programs[@]} 'pepperflashplugin-nonfree')
 programs=(${programs[@]} 'libreoffice')
-#programs=(${programs[@]} 'gimp')
+programs=(${programs[@]} 'gimp')
 #programs=(${programs[@]} 'samba')
 programs=(${programs[@]} 'wine')
 programs=(${programs[@]} 'network-manager-openvpn')
 programs=(${programs[@]} 'xscreensaver')
 programs=(${programs[@]} 'smplayer')
+programs=(${programs[@]} 'openjdk-7-jre')
+
 programs=(${programs[@]} 'virtualbox')
 programs=(${programs[@]} 'skype')
 
