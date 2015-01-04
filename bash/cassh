@@ -1,5 +1,4 @@
 #!/bin/bash
-#fusermount -u $HOME/sshfs
 
 # Получение пароля
 #stty -echo
@@ -8,10 +7,18 @@
 #stty echo
 #printf "\n"
 
-FOLDER=`echo -n $1 | sed "s/[@\.\ ]/_/g"`
+USER=`whoami`
 
-if [ $2 ]
-then
+
+FOLDER=`echo -n $1 | sed "s/[@\.\ ]/_/g"`
+SSHFS_DIR=$HOME'/sshfs'
+
+if [ ! -d $SSHFS_DIR ]; then
+	mkdir $SSHFS_DIR
+fi
+
+# if need use other IdentityKey
+if [ $2 ]; then
 	KEY="-i $2 "
 	KEYFS="-o IdentityFile=$2 "
 else
@@ -19,9 +26,24 @@ else
 	KEYFS=""
 fi
 
-if [ ! -d $HOME/sshfs/$FOLDER ]
-then
-	FSDIR=$HOME/sshfs/$FOLDER
+
+# Check install program sshfs
+if [ ! "$(dpkg -s sshfs 2>&1 | grep Status)" ]; then
+	echo 'Need install program:'
+	echo 'sudo apt-get install sshfs'
+	exit
+fi
+
+# Check user group fuse
+if [ ! "$(grep $USER /etc/group | grep ^fuse)" ]; then
+	echo 'Need add user in group fuse:'
+	echo "sudo usermod -a -G fuse $USER"
+	exit
+fi
+
+
+if [ ! -d $SSHFS_DIR/$FOLDER ]; then
+	FSDIR=$SSHFS_DIR/$FOLDER
 	mkdir $FSDIR
 	sshfs $KEYFS$1:/ $FSDIR
 
