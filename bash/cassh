@@ -29,16 +29,15 @@ fi
 
 # Check install program sshfs
 if [ ! "$(dpkg -s sshfs 2>&1 | grep Status)" ]; then
-	echo 'Need install program:'
-	echo 'sudo apt-get install sshfs'
+	echo -e "\033[1;37;41m"'Need install program:'"\033[0m"
+	echo -e "\033[1;37;40m"'sudo apt-get install sshfs'"\033[0m"
 	exit
 fi
 
 # Check user group fuse
 if [ ! "$(grep $USER /etc/group | grep ^fuse)" ]; then
-	echo 'Need add user in group fuse:'
-	echo "sudo usermod -a -G fuse $USER"
-	exit
+	echo -e "\033[1;44m"'Need add user in group fuse:'"\033[0m"
+	echo -e "\033[1;37;40m""sudo usermod -a -G fuse $USER""\033[0m"
 fi
 
 
