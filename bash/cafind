@@ -7,28 +7,22 @@ DIRS=(\
 	'./'\
 )
 
-#PATHS=(\
-#)
-PATHS_NO=(\
-	'.git/'\
-	'.svn/'\
-	'.idea/'\
-	'tmp/'\
-)
-#	'images/'\
-#	'cache/'\
-#	'logs/'\
-#	'tools/db_pma/'\
+#PATHS=('')
+PATHS_NO=('.git/')
+PATHS_NO=(${PATHS_NO[@]} '.svn/')
+PATHS_NO=(${PATHS_NO[@]} '.idea/')
+PATHS_NO=(${PATHS_NO[@]} 'tmp/')
+#PATHS_NO=(${PATHS_NO[@]} 'images/')
+#PATHS_NO=(${PATHS_NO[@]} 'cache/')
+#PATHS_NO=(${PATHS_NO[@]} 'logs/')
+#PATHS_NO=(${PATHS_NO[@]} 'tools/db_pma/')
 
-#NAME=(\
-#)
-NAME_NO=(\
-)
-#	'*.csv'\
-#	'*.log'\
-#	'*.mo'\
-#	'*.txt'\
-#	'*.min.js'\
+#NAME=('')
+NAME_NO=('*.min.js')
+#NAME_NO=(${NAME_NO[@]} '*.csv')
+#NAME_NO=(${NAME_NO[@]} '*.log')
+#NAME_NO=(${NAME_NO[@]} '*.mo')
+#NAME_NO=(${NAME_NO[@]} '*.txt')
 
 TYPE='f'
 
