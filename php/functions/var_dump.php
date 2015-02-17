@@ -6,7 +6,7 @@ function caysi_var_dump() {
 		$GLOBALS['debug_info'].= '<hr>';
 		$GLOBALS['debug_info'].= F::_call('color_var_dump', array($var));
 	}
-	$GLOBALS['debug_info'].= '<hr style="color: red;">';
+	$GLOBALS['debug_info'].= '<hr class="block">';
 
 	if(defined('NSD')){
 		$GLOBALS['debug_info'].= $var_dump_content;

@@ -15,7 +15,13 @@ div#shutdown_content {
 }
 div#shutdown_content * {
 	padding: 0 1px;
-	margin: 0;
+	margin: 1px;
+}
+div#shutdown_content hr {
+	border: 1px solid #BBB;
+}
+div#shutdown_content hr.block {
+	border-color: #555;
 }
 div#shutdown_button, div#shutdown_content {
 	position: absolute;

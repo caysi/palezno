@@ -1,5 +1,7 @@
 <?php
-define('NSD',               true);
+if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+	define('NSD',               true);
+}
 define('PALEZNO_PATH',      dirname(__FILE__));
 define('FUNCTIONS_PATH',    PALEZNO_PATH.'/functions');
 define('STATIC_PATH',       FUNCTIONS_PATH.'/static');

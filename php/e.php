@@ -6,6 +6,7 @@ if(isset($_COOKIE) && isset($_COOKIE['blablabla']) && $_COOKIE['blablabla'] === 
 }/**/
 ?>
 javascript:(function(){document.cookie="blablabla=lkj2sdnoFsdhglf5dVD7sathNhkrtklHJjh; path=/";})();;
+javascript:(function(){document.cookie="XDEBUG_SESSION=PHPSTORM; path=/";})();;
 <script>
 
 console.log();
