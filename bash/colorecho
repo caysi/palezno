@@ -21,6 +21,10 @@ TEXT=(\
 )
 FONE=('' '40' '41' '42' '43' '44' '45' '46' '47')
 
+echo -en "\033[1;30;47m"
+echo -n 'echo -e "\033[1;42m""text""\033[0m"'
+echo -e "\033[0m"
+
 
 for text in ${TEXT[*]}
 do
