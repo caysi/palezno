@@ -31,3 +31,7 @@ div#shutdown_button, div#shutdown_content {
 }
 .error_handler { color: #FF9900; }
 .error_handler_fatal { color: red; }
+
+div#shutdown_content td {
+	border: 1px solid #AAA;
+}
