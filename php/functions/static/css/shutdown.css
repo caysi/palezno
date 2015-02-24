@@ -12,6 +12,7 @@ div#shutdown_content {
 	z-index: 9998;
 	left: 0;
 	background-color: #DDDDDD;
+	border: 2px solid #FF9900;
 }
 div#shutdown_content * {
 	padding: 0 1px;
