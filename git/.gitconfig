@@ -65,6 +65,7 @@
 	lloog = log --pretty=format:'%C(yellow)%h%C(reset) %ai %C(blue bold)[%an]%C(reset) \"%C(green)%s%C(reset)\"' --date=local --graph
 	co    = checkout
 	br    = branch
+	bra   = branch -a
 ;	ci    = commit
 	sd    = !sh -c 'git status && git diff' -
 	showm = !sh -c 'git diff $1^1 $1' -		;diff мержа
