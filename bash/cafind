@@ -26,7 +26,7 @@ NAME_NO=('*.min.js')
 
 TYPE='f'
 
-GREP_DEF_PARAMS='--color -n -I'
+GREP_DEF_PARAMS='--color -n -I -H'
 
 for item in ${DIRS[*]}; do
 	COM=$COM' '$item
@@ -54,8 +54,7 @@ else
 fi
 
 COM=$COM" -type f$FIND_PARAMS"
-COM=$COM" | sed -e 's/ /\\\ /g'"
-COM=$COM" | xargs grep $GREP_DEF_PARAMS$GREP_PARAMS '$1'"
+COM=$COM" -exec grep $GREP_DEF_PARAMS$GREP_PARAMS '$1' '{}' \;"
 
 echo -e "\033[1;42m"
 echo $COM
