@@ -1,7 +1,8 @@
 [core]
 	autocrlf = input
 	safecrlf = warn
-    pager    = "less -A"
+	pager    = less -rx4
+#	pager    = sed 's/\t/___,/g' |less -r
 #	pager    = "vim -u /var/www/palezno/vim/vimrc.more -R -"
 [include]
 	path = .gitconfiguser
@@ -44,6 +45,7 @@
 
 	di    = diff
 	dis   = diff --staged			;diff файлов добавленных в коммит
+	disw  = diff --staged --word-diff
 	dit   = difftool -y
 	dits  = difftool -y --staged		;difftool файлов добавленных в коммит
 	diw   = diff --word-diff			;diff показывает изменненые слова, а не строки
