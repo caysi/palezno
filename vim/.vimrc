@@ -197,6 +197,7 @@ set dictionary=~/.vim/dic/phpFuncList.txt	" Используем словарь 
 " Вывод отладочной информации
 iabbrev dbg echo '<xmp>'; var_dump(); echo '</xmp>'; //TODO DELETE<ESC>F(li<C-R>
 iabbrev vd F::var_dump(); //TODO DELETE<ESC>F(li<C-R>
+iabbrev cl console.log(); //TODO DELETE<ESC>F(li<C-R>
 iabbrev vdo F::var_dump_old(); //TODO DELETE<ESC>F(li<C-R>
 iabbrev tm echo 'File: '.__FILE__.', line: '.__LINE__."\n<br>"; //TODO DELETE
 
