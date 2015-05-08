@@ -1,14 +1,20 @@
 <?php
-if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-	define('NSD',               true);
-}
 define('PALEZNO_PATH',      dirname(__FILE__));
 define('FUNCTIONS_PATH',    PALEZNO_PATH.'/functions');
 define('STATIC_PATH',       FUNCTIONS_PATH.'/static');
 define('FUNCTIONS_PREFIX',  'caysi_');
 define('DEBUG_CONTENT_FILE',FUNCTIONS_PATH.'/debugContent/index.html'); //TODO вернуть в errorHendler
-// определяем скрит запущет из терминала или нет
-if(PHP_SAPI == 'cli'){ define('THIS_TERMINAL', TRUE); } else { define('THIS_TERMINAL', FALSE); }
+
+if(PHP_SAPI == 'cli'){
+	define('ENVIRONMENT', 'cli');
+}
+elseif(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+	define('ENVIRONMENT', 'ajax');
+	define('NSD', true);
+}
+else{
+	define('ENVIRONMENT', 'html');
+}
 
 if(isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] === '/showDebugContent') {
 	if(file_exists(DEBUG_CONTENT_FILE)) {

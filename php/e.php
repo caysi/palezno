@@ -4,6 +4,9 @@ echo '<br>'.__LINE__.'<hr>';
 if(isset($_COOKIE) && isset($_COOKIE['blablabla']) && $_COOKIE['blablabla'] === 'lkj2sdnoFsdhglf5dVD7sathNhkrtklHJjh') {
 	echo '<hr><xmp>'; var_dump(); echo '</xmp><hr>'; exit;
 }/**/
+$time_start = microtime(true);
+echo __LINE__.': '.number_format((microtime(true) - $time_start), 10)."\t".number_format(microtime(true), 10)."\n"; $time_start = microtime(true);
+
 ?>
 javascript:(function(){document.cookie="blablabla=lkj2sdnoFsdhglf5dVD7sathNhkrtklHJjh; path=/";})();;
 javascript:(function(){document.cookie="XDEBUG_SESSION=PHPSTORM; path=/";})();;

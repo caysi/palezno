@@ -1,9 +1,10 @@
 <?php
 
-function caysi_color_var_dump(&$var, $tag = 'pre', $indent=0) { //TODO color_...
+function caysi_color_cli_var_dump(&$var, $tag = 'pre', $indent=0) { //TODO color_...
 	if($indent > 5)
-		return '<'.$tag.' style="color: red;">{...}</'.$tag.'>';
+		return "\033[31m{...}\033[0m";
 
+	$funcName = __FUNCTION__;
 	// Params
 	//$preStyle = ' margin: 1px 0;';
 	$indentType = '    '; // 4 пробела
@@ -21,60 +22,60 @@ function caysi_color_var_dump(&$var, $tag = 'pre', $indent=0) { //TODO color_...
 	$type = gettype($var);
 	if($type === $boolean['name']) {
 		if($var === TRUE)
-			$printString.= '<'.$tag.' style="color: '.$boolean['colorT'].';"><b>TRUE</b></'.$tag.'>';
+			$printString.= "\033[1;37m" . 'TRUE' . "\033[0m";
 		else
-			$printString.= '<'.$tag.' style="color: '.$boolean['colorF'].';"><b>FALSE</b></'.$tag.'>';
+			$printString.= "\033[1;37m" . 'FALSE' . "\033[0m";
 	}
 	elseif($type === $integer['name']) {
-		$printString.= '<'.$tag.' style="color: '.$integer['color'].';">'.$var.'</'.$tag.'>';
+		$printString.= "\033[1;34m" . $var . "\033[0m";
 	}
 	elseif($type === $float['name']) {
-		$printString.= '<'.$tag.' style="color: '.$float['color'].';">'.$var.'</'.$tag.'>';
+			$printString.= "\033[1;30m" . $var . "\033[0m";
 	}
 	elseif($type === $string['name']) {
-		$printString.= '<'.$tag.' style="color: '.$string['color'].';">\''.htmlspecialchars($var).'\'</'.$tag.'>';
+		$printString.= "\033[1;32m'" . $var . "'\033[0m";
 	}
 	elseif($type === $array['name']) {
 		if(empty($var)) {
-			$printString.= '<'.$tag.'><b>array</b>()</'.$tag.'>';
+			$printString.= 'array()';
 		}
 		else {
-		$printString.= '<'.$tag.'><b>array</b>('."\n";
+		$printString.= 'array('."\n";
 
 		foreach($var as $key=>&$value) {
-			$printString.= str_repeat($indentType, $indent+1).caysi_color_var_dump($key, 'span').' => ';
-			$printString.= caysi_color_var_dump($value, 'span', $indent+1);
+			$printString.= str_repeat($indentType, $indent+1) . $funcName($key, 'span').' => ';
+			$printString.= $funcName($value, 'span', $indent+1);
 			$printString.= ','."\n";
 		}
 
-		$printString.= str_repeat($indentType, $indent).')</'.$tag.'>';
+		$printString.= str_repeat($indentType, $indent).')';
 		}
 	}
 	elseif($type === $object['name']) {
 		$className = get_class($var);
-		$printString.= '<'.$tag.'><b>class</b> '.$className.' {'."\n";
+		$printString.= "\033[1;37m" . 'class ' . "\033[0m" . $className.' {'."\n";
 
 		foreach((array)$var as $key=>$value) {
 			if(strpos($key, '*') === 1) { //TODO тут есть не печатный 2 пробела
-				$visibility = '<b>#</b>';
+				$visibility = "\033[1;37m" . '#' . "\033[0m";
 				$key = str_replace('*', '', $key);
 			}
 			elseif(strpos($key, $className) === 1) { //TODO тут есть не печатный 2 пробела
-				$visibility = '<b>-</b>';
+				$visibility = "\033[1;37m" . '-' . "\033[0m";
 				$key = str_replace($className, '', $key);
 			}
 			else
-				$visibility = '<b>+</b>';
+				$visibility = "\033[1;37m" . '+' . "\033[0m";
 
 			$printString.= ''.str_repeat($indentType, $indent+1).$visibility.' '.'$'.$key.' = ';
-			$printString.= caysi_color_var_dump($value, 'span', $indent+1);
+			$printString.= $funcName($value, 'span', $indent+1);
 			$printString.= ';'."\n";
 		}
 
-		$printString.= ''.str_repeat($indentType, $indent).'}</'.$tag.'>';
+		$printString.= ''.str_repeat($indentType, $indent).'}';
 	}
 	elseif($type === $NULL['name']) {
-		$printString.= '<'.$tag.' style="color: '.$NULL['color'].';"><b>NULL</b></'.$tag.'>';
+		$printString.= "\033[1;37mNULL\033[0m";
 	}
 	return $printString;
 }

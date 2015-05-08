@@ -2,11 +2,21 @@
 function caysi_var_dump() {
 	$var_dump_content = '';
 	$args = func_get_args();
-	foreach($args as &$var) {
-		$GLOBALS['debug_info'].= '<hr>';
-		$GLOBALS['debug_info'].= F::_call('color_var_dump', array($var));
+
+	if(ENVIRONMENT === cli) {
+		foreach($args as &$var) {
+			$var_dump_content.= "\n\033[37m" . '---------------------------' . "\033[0m\n";
+			$var_dump_content.= F::_call('color_cli_var_dump', array($var));
+		}
+		$var_dump_content.= "\n\033[30;47m" . '===========================' . "\033[0m\n";
 	}
-	$GLOBALS['debug_info'].= '<hr class="block">';
+	else {
+		foreach($args as &$var) {
+			$var_dump_content.= '<hr>';
+			$var_dump_content.= F::_call('color_var_dump', array($var));
+		}
+		$var_dump_content.= '<hr class="block">';
+	}
 
 	if(defined('NSD')){
 		$GLOBALS['debug_info'].= $var_dump_content;

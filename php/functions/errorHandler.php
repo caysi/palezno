@@ -62,19 +62,21 @@ function caysi_register_shutdown_function() {
 
 	$debugContent = '';
 
-	$debugContent.= F::_call('getCSS', array('shutdown'));
-	if(empty($GLOBALS['debug_info'])) {
-		$debugContent.= '<div id="shutdown_button" class="empty"></div>'."\n";
-	}
-	else {
-		if(empty($buttonClass)) $buttonClass = 'notice';
+	if(ENVIRONMENT === 'html') {
+		$debugContent.= F::_call('getCSS', array('shutdown'));
+		if(empty($GLOBALS['debug_info'])) {
+			$debugContent.= '<div id="shutdown_button" class="empty"></div>'."\n";
+		}
+		else {
+			if(empty($buttonClass)) $buttonClass = 'notice';
 
-		$displayContent = 'display:none;';
-		if(defined('NSD') || $buttonClass === 'fatal') $displayContent = '';
+			$displayContent = 'display:none;';
+			if(defined('NSD') || $buttonClass === 'fatal') $displayContent = '';
 
-		$debugContent.= F::_call('getJS', array('shutdown'))."\n";
-		$debugContent.= '<div id="shutdown_content" style="'.$displayContent.'">'.$GLOBALS['debug_info'].'</div>'."\n";
-		$debugContent.= '<div id="shutdown_button" class="'.$buttonClass.'" onclick="showContent()"></div>'."\n";
+			$debugContent.= F::_call('getJS', array('shutdown'))."\n";
+			$debugContent.= '<div id="shutdown_content" style="'.$displayContent.'">'.$GLOBALS['debug_info'].'</div>'."\n";
+			$debugContent.= '<div id="shutdown_button" class="'.$buttonClass.'" onclick="showContent()"></div>'."\n";
+		}
 	}
 
 	// show or save in file debug and errors
