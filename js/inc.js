@@ -1,14 +1,14 @@
-var scriptName = 'dev';
-var scriptPath = 'raw.githubusercontent.com/caysi/palezno/master/js';
-var tagId = 'include_script';
-var head = document.getElementsByTagName('HEAD')[0];
-var nevJs = document.createElement('script');
+var sct = {
+	'name': 'dev',
+	'dmn': 'raw.githubusercontent.com',
+	'path': 'caysi/palezno/master/js',
+	'head': document.getElementsByTagName('HEAD')[0],
+	'nevJs': document.createElement('script')
+};
 
-nevJs.src = location.protocol+'//'+scriptPath+'/'+scriptName+'.js?time='+(new Date().getTime());
-nevJs.id = tagId;
-head.appendChild(nevJs);
+sct.nevJs.src = location.protocol+'//'+sct.dmn+'/'+sct.path+'/'+sct.name+'.js?time='+(new Date().getTime());
+sct.head.appendChild(sct.nevJs);
+sct.head.removeChild(sct.nevJs);
 
-var killElemnt = document.getElementById(tagId);
-killElemnt.parentElement.removeChild(killElemnt);
+delete sct;
 
-delete tagId; delete head; delete nevJs; delete killElemnt;
