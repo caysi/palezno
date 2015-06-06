@@ -3,6 +3,7 @@ div#shutdown_button {
 	right: 0;
 	width: 30px;
 	height: 30px;
+	border-radius: 0 0 0 5px;
 }
 div#shutdown_button.empty  { background-color: green; }
 div#shutdown_button.notice { background-color: #FF9900; }
@@ -13,6 +14,7 @@ div#shutdown_content {
 	left: 0;
 	background-color: #DDDDDD;
 	border: 2px solid #FF9900;
+	border-radius: 0 0 5px 0;
 }
 div#shutdown_content * {
 	padding: 0 1px;
@@ -30,7 +32,6 @@ div#shutdown_button, div#shutdown_content {
 	margin: 0;
 	padding: 0;
 	box-shadow: 0 0 10px rgba(0,0,0,0.9);
-	border-radius: 5px;
 }
 .error_handler { color: #FF9900; }
 .error_handler_fatal { color: red; }
