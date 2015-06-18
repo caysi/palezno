@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cmd=$(echo $1 | sed -e 's/localapp://g')
+
+app=$(echo $cmd | sed -e 's/^\([^:]*\):.*/\1/g')
+param=$(echo $cmd | sed -e 's/'$app'://g')
+
+$app $param
