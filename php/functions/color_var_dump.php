@@ -76,5 +76,8 @@ function caysi_color_var_dump(&$var, $tag = 'pre', $indent=0) { //TODO color_...
 	elseif($type === $NULL['name']) {
 		$printString.= '<'.$tag.' style="color: '.$NULL['color'].';"><b>NULL</b></'.$tag.'>';
 	}
+	elseif($type === $resource['name']) {
+		$printString.= '<'.$tag.' style="color: '.$resource['color'].';">'.$var.'</'.$tag.'>';
+	}
 	return $printString;
 }
