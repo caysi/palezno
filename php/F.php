@@ -51,6 +51,9 @@ class F {
 
 		require_once(FUNCTIONS_PATH.'/'.$name.'.php');
 		$name = FUNCTIONS_PREFIX.$name;
+		if(!$args) {
+			return $name();
+		}
 		return eval(self::evalStr($name, $args));
 	}
 	static function __callStatic($name, $args) {
@@ -74,6 +77,44 @@ class F {
 			$evalStr = $name.'();';
 		}
 		return 'return '.$evalStr;
+	}
+
+
+	// timeUsed
+	static function tu() {
+		$now = microtime(true);
+		static $ts;
+		if(isset($ts)) {
+			$line = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[0]['line'];
+			$ctn = '=t=>L: ' . $line . "\t" . number_format(($now - $ts), 10, '.', ' ') . "\t" . number_format($now, 10, '.', ' ');
+			if (PHP_SAPI === 'cli') {
+				echo "\033[1;42m" . $ctn . "\033[0m" . "\n";
+			}
+			else {
+				echo '<pre>' . $ctn . '</pre>';
+			}
+		}
+		unset($line, $ctn, $now);
+
+		$ts = microtime(true);
+	}
+
+	// memoryUsed
+	static function mu() {
+		$now = memory_get_usage();
+		static $m;
+		if(isset($m)) {
+			$line = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[0]['line'];
+			$ctn = '=m=>L: ' . $line . "\t" . number_format(($now - $m), 0, '.', ' ') . "\t" . number_format($now, 0, '.', ' ');
+			if (PHP_SAPI === 'cli') {
+				echo "\033[1;42m" . $ctn . "\033[0m" . "\n";
+			}
+			else {
+				echo '<pre>' . $ctn . '</pre>';
+			}
+		}
+
+		$m = $now;
 	}
 }
 
