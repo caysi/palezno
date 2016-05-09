@@ -36,7 +36,7 @@ function loadNewJs(name) {
 		'nevJs': document.createElement('script')
 	};
 
-	sct.nevJs.src = location.protocol+'//'+sct.dmn+'/'+sct.path+'/'+sct.name+'.js?time='+(new Date().getTime());
+	sct.nevJs.src = location.protocol+'//'+sct.dmn+'/'+sct.path+'/'+sct.name+'.js';
 	sct.head.appendChild(sct.nevJs);
 	sct.head.removeChild(sct.nevJs);
 }
