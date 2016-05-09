@@ -1,1 +1,1 @@
-document.location.href='view-source:'+location.protocol+'//'+location.host;
+document.location.href='view-source:'+location.toString();
