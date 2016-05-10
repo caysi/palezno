@@ -40,7 +40,7 @@
 	re    = rebase
 	mef   = merge --no-ff --no-edit
 	mefe  = merge --no-ff
-	rsha  = reset --hard
+	;rsha  = reset --hard
 	rsso  = reset --soft
 	rshe  = reset HEAD
 
