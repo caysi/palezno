@@ -1,11 +1,12 @@
-<?php require_once('/var/www/palezno/php/F.php'); //TODO DELETE
-\F::var_dump();	exit; //TODO: DELETE
+<?php
+/*TODO DELETE*/ $f='/var/www/palezno/php/F.php'; if(is_readable($f)){ require_once($f);} else { class F { static function __callStatic($name, $args) { return null; } function __call($name, $args) { return null; } } }
+\F::var_dump();	exit; //TODO DELETE
 echo '<br>'.__LINE__.'<hr>';
 if(isset($_COOKIE) && isset($_COOKIE['blablabla']) && $_COOKIE['blablabla'] === 'lkj2sdnoFsdhglf5dVD7sathNhkrtklHJjh') {
 	echo '<hr><xmp>'; var_dump(); echo '</xmp><hr>'; exit;
 }/**/
-$time_start = microtime(true);
-echo __LINE__.': '.number_format((microtime(true) - $time_start), 10)."\t".number_format(microtime(true), 10)."\n"; $time_start = microtime(true);
+/*TODO DELETE*/function st($l){static $ts;if($ts){$now=microtime(true);$ctn = '===>L: '.$l."\t".number_format(($now-$ts),10)."\t".number_format($now,10);if(PHP_SAPI==='cli'){$ctn="\033[1;42m".$ctn."\033[0m";}echo $ctn."\n";}$ts = microtime(true);}
+/*TODO DELETE*/ function stm($l) { static $m; if ($m) { $nowM = memory_get_usage(); $ctn = '=m=>L: ' . $l . "\t" . number_format(($nowM - $m), 0, '.', ' ') . "\t" . number_format($nowM, 0, '.', ' ') . "\t"; if (PHP_SAPI === 'cli') { $ctn = "\033[1;42m" . $ctn . "\033[0m"; } echo $ctn . "\n"; $m = $nowM; } else { $m = memory_get_usage(); } }
 
 ?>
 javascript:(function(){document.cookie="blablabla=lkj2sdnoFsdhglf5dVD7sathNhkrtklHJjh; path=/";})();;
@@ -17,6 +18,10 @@ debugger;
 console.trace();
 
 </script>
+
+PREG
+(?!word)
+
 
 <?php
 $Mfc = '['.date('d-H:i:s').'] '.__FILE__.' +'.__LINE__.' '.__METHOD__.'()'."\n"; //TODO DELETE
