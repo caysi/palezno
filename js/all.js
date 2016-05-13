@@ -4,6 +4,8 @@ var jsNames = [
 	'inc',
 	'killElements',
 	'redmine',
+	'urlQR',
+	'textQR',
 	'view-source'
 ];
 
@@ -39,5 +41,7 @@ function loadNewJs(name) {
 	sct.nevJs.src = location.protocol+'//'+sct.dmn+'/'+sct.path+'/'+sct.name+'.js';
 	sct.head.appendChild(sct.nevJs);
 	sct.head.removeChild(sct.nevJs);
+
+	delete sct;
 }
 
