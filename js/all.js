@@ -6,6 +6,7 @@ var jsNames = [
 	'redmine',
 	'urlQR',
 	'textQR',
+	'gmuiStyle',
 	'view-source'
 ];
 
