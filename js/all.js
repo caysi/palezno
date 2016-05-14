@@ -13,7 +13,7 @@ var jsNames = [
 
 var jsLinks = document.createElement('div');
 jsLinks.id = 'loadAllJs';
-jsLinks.setAttribute('style', 'z-index: 999999; position: fixed; top: 0px; left: 0px; background-color: rgba(0, 0, 0, 0.6); width: 100%; height: 100%; padding: 20px; font: 15pt/1.1 Arial,sans-serif !important');
+jsLinks.setAttribute('style', 'z-index: 2147483647; position: fixed; top: 0px; left: 0px; background-color: rgba(0, 0, 0, 0.6); width: 100%; height: 100%; padding: 20px; font: 15pt/1.1 Arial,sans-serif !important');
 jsLinks.setAttribute('onClick', 'this.parentNode.removeChild(this)');
 
 var jsLinksInnner = '<div style="background-color: white; border-radius: 10px; display: inline-block; padding: 20px;">';
