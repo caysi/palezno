@@ -109,8 +109,19 @@ Change `/etc/default/rcS` `UTC=no`
 - change users if need
 - reboot services
 
-***
+####Bind
 
+	sudo apt-get install bind9
+	sudo service bind9 start
+	cd /etc/bind
+	sudo cp db.empty ll.empty
+	sudo vim ll.empty; add * IN A 127.0.0.1\n @ IN A 127.0.0.1
+	sudo vim named.conf.default-zones; add zone "ll" { type master; file "/etc/bind/ll.empty"; };
+	sudo vim named.conf.options; add forvarders { 192.168.1.1; 8.8.8.8; 8.8.4.4; }
+	sudo service bind9 restart
+	#sudo update-rc.d bind9 defaults
+
+***
 ###Skype [bug](https://help.ubuntu.com/community/Skype)
 
 	sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
