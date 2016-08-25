@@ -66,9 +66,16 @@ if [[ $h = true ]]; then xtermCom="$xtermCom -hold"; fi
 if [[ $g ]]; then        xtermCom="$xtermCom -geometry $g"; fi
 
 xtermCom="$xtermCom -xrm 'XTerm*selectToClipboard: true' -sb -rightbar"
-xtermCom="$xtermCom -title '"$com"'"
 
-xtermCom="$xtermCom -e /bin/bash -c '$com'"
+if [[ $s ]]; then
+	xtermCom="$xtermCom -title 's:$s: $com'"
+	xtermCom="$xtermCom -e /bin/bash -c 'ssh -t $s '\''$com'\'''"
+else
+	xtermCom="$xtermCom -title '"$com"'"
+	xtermCom="$xtermCom -e /bin/bash -c '$com'"
+fi
+
+
 
 
 #echo "$xtermCom"
