@@ -1,0 +1,75 @@
+#!/bin/bash
+
+while : ; do
+	case "$1" in
+		--)
+			shift
+			for var in "$@"; do
+				if [[ $var =~ [[:space:]] ]]; then
+					var=\'"$var"\'
+				fi
+
+				if [[ $com ]]; then
+					com=$com' '"$var"
+				else
+					com="$var"
+				fi
+			done
+			break
+		;;
+		-*)
+			name=$(echo $1 | sed -e "s/^-//" )
+			if [[ $2 =~ ^- ]]; then
+				declare "$name"=true
+				shift 1
+			else
+				var="$2"
+				if [[ $var =~ [[:space:]] ]]; then
+					var=\'"$var"\'
+				fi
+				declare "$name"="$var"
+				shift 2
+			fi
+
+		;;
+
+		*)  # No more options
+			for var in "$@"; do
+				if [[ $var =~ [[:space:]] ]]; then
+					var=\'"$var"\'
+				fi
+
+				if [[ $com ]]; then
+					com=$com' '"$var"
+				else
+					com="$var"
+				fi
+			done
+			break
+		;;
+
+	esac
+done
+
+
+
+
+
+
+com=`echo $com | sed -e "s/'/'\\\\\\\''/g"`
+
+#echo "com=#$com#"
+
+
+xtermCom="xterm"
+if [[ $h = true ]]; then xtermCom="$xtermCom -hold"; fi
+if [[ $g ]]; then        xtermCom="$xtermCom -geometry $g"; fi
+
+xtermCom="$xtermCom -xrm 'XTerm*selectToClipboard: true' -sb -rightbar"
+xtermCom="$xtermCom -title '"$com"'"
+
+xtermCom="$xtermCom -e /bin/bash -c '$com'"
+
+
+#echo "$xtermCom"
+eval "$xtermCom"
