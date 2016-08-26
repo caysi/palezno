@@ -5,7 +5,7 @@ while : ; do
 		--)
 			shift
 			for var in "$@"; do
-				if [[ $var =~ [[:space:]] ]]; then
+				if [[ $var =~ [[:space:]] ]] || [[ $var =~ \^ ]] || [[ $var =~ \\ ]]; then
 					var=\'"$var"\'
 				fi
 
@@ -35,7 +35,7 @@ while : ; do
 
 		*)  # No more options
 			for var in "$@"; do
-				if [[ $var =~ [[:space:]] ]]; then
+				if [[ $var =~ [[:space:]] ]] || [[ $var =~ \^ ]]; then
 					var=\'"$var"\'
 				fi
 
@@ -56,27 +56,31 @@ done
 
 
 
-com=`echo $com | sed -e "s/'/'\\\\\\\''/g"`
+com=`echo "$com" | sed -e "s/'/'\\\\\\\''/g"`
 
 #echo "com=#$com#"
 
 
 xtermCom="xterm"
 if [[ $h = true ]]; then xtermCom="$xtermCom -hold"; fi
+if [[ $m = true ]]; then xtermCom="$xtermCom -maximized"; fi
 if [[ $g ]]; then        xtermCom="$xtermCom -geometry $g"; fi
 
 xtermCom="$xtermCom -xrm 'XTerm*selectToClipboard: true' -sb -rightbar"
 
+if [[ $t ]]; then title="$t"; else title="$com"; fi
+
 if [[ $s ]]; then
-	xtermCom="$xtermCom -title 's:$s: $com'"
+	xtermCom="$xtermCom -title 's:$s: $title'"
+	com=`echo "$com" | sed -e "s/'/'\\\\\\\''/g"`
 	xtermCom="$xtermCom -e /bin/bash -c 'ssh -t $s '\''$com'\'''"
 else
-	xtermCom="$xtermCom -title '"$com"'"
+	xtermCom="$xtermCom -title '"$title"'"
 	xtermCom="$xtermCom -e /bin/bash -c '$com'"
 fi
 
 
 
 
-#echo "$xtermCom"
-eval "$xtermCom"
+#echo "$xtermCom &"
+eval "$xtermCom &"
