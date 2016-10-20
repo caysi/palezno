@@ -1,0 +1,96 @@
+#!/usr/bin/env php
+<?php
+
+$loopOut = 1000;
+while($loopOut > 0) {
+	--$loopOut;
+
+	$out = '';
+
+	$host = 'www.i.ua';
+	$status = pingHttp($host);
+	if($status > 15) { //todo 15
+		$out = "\n" . '-<b>' . number_format($status, 2) . '</b>->[http_' . $host . ']' . $out;
+
+		$host = 'www.i.ua';
+		$status = ping($host);
+		if($status > 10) {
+			$out = "\n" . '-<b>' . number_format($status, 2) . '</b>->[icmp_' . $host . ']' . $out;
+
+			$host = '91.198.36.14';
+			$status = pingHttp($host);
+			if($status > 15) {
+				$out = "\n" . '-<b>' . number_format($status, 2) . '</b>->[http_' . $host . ']' . $out;
+			}
+		}
+	}
+
+
+
+	if(!empty($out)) {
+		$out = '[local]' . $out;
+		exec('canotify "netTest" "' . $out . '"');
+	}
+	sleep(5);
+}
+
+
+echo "END\n";
+
+
+
+
+
+
+
+
+function ping($host) {
+	$time = exec('ping -c 1 -W 2 ' . $host . ' 2>&1');
+	if(empty($time)) {
+		return false;
+	}
+
+	if(preg_match('/([\d\.]+)\//', $time, $m)) {
+		$time = $m[1];
+	}
+	else {
+		$time = false;
+	}
+
+	return round($time, 2);
+}
+
+
+function pingHttp($host, $port=80){
+	$starttime = microtime(true);
+	$file      = fsockopen ($host, $port, $errno, $errstr, 10);
+	$stoptime  = microtime(true);
+	$status    = 0;
+
+	if (!$file) $status = -1;  // Site is down
+	else {
+		fclose($file);
+		$status = ($stoptime - $starttime) * 1000;
+		$status = round($status, 2);
+	}
+	return $status;
+}
+
+
+function pingRoot($host, $timeout = 1) {
+	/* ICMP ping packet with a pre-calculated checksum */
+	$package = "\x08\x00\x7d\x4b\x00\x00\x00\x00PingHost";
+	$socket  = socket_create(AF_INET, SOCK_RAW, 1);
+	socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, array('sec' => $timeout, 'usec' => 0));
+	socket_connect($socket, $host, null);
+	$ts = microtime(true);
+	socket_send($socket, $package, strLen($package), 0);
+	if (socket_read($socket, 255)) {
+		$result = microtime(true) - $ts;
+	} else {
+		$result = false;
+	}
+	socket_close($socket);
+	return $result;
+}
+
