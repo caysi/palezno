@@ -21,24 +21,24 @@ programs=(${programs[@]} 'curl')
 #lamp-server^
 programs=(${programs[@]} 'apache2')
 programs=(${programs[@]} 'mysql-server')
-programs=(${programs[@]} 'php5')
-programs=(${programs[@]} 'php5-cli')
-programs=(${programs[@]} 'php5-mysql')
+programs=(${programs[@]} 'php')
+programs=(${programs[@]} 'php-cli')
+programs=(${programs[@]} 'php-mysql')
 programs=(${programs[@]} 'libapache2-mod-php5')
 
 #nginx php-fpm
 programs=(${programs[@]} 'nginx')
-programs=(${programs[@]} 'php5-fpm')
+programs=(${programs[@]} 'php-fpm')
 
 #php curl ...
-programs=(${programs[@]} 'php5-gd')
-programs=(${programs[@]} 'php5-curl')
-programs=(${programs[@]} 'php5-geoip')
-programs=(${programs[@]} 'php5-mcrypt')
+programs=(${programs[@]} 'php-gd')
+programs=(${programs[@]} 'php-curl')
+programs=(${programs[@]} 'php-geoip')
+programs=(${programs[@]} 'php-mcrypt')
 
 #php debug
-programs=(${programs[@]} 'php5-xdebug')
-programs=(${programs[@]} 'php5-xhprof')
+programs=(${programs[@]} 'php-xdebug')
+programs=(${programs[@]} 'php-xhprof')
 
 
 
@@ -51,6 +51,7 @@ programs=(${programs[@]} 'gimp')
 #programs=(${programs[@]} 'samba')
 programs=(${programs[@]} 'wine')
 programs=(${programs[@]} 'network-manager-openvpn')
+programs=(${programs[@]} 'network-manager-openvpn-gnome')
 programs=(${programs[@]} 'xscreensaver')
 programs=(${programs[@]} 'smplayer')
 programs=(${programs[@]} 'baobab')
@@ -65,7 +66,7 @@ for program in ${programs[*]}; do
 	if [ "$(dpkg -s $program 2>&1 | grep Status)" = '' ]; then
 		echo -e '\033[1;42m''Install '$program'\033[0m'
 	else
-		echo -e '\033[32;47m''Installed '$program'\033[0m'
+		echo -e '\033[1;37;47m''Installed '$program'\033[0m'
 	fi
 done
 
