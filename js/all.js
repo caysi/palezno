@@ -1,10 +1,6 @@
 var jsNames = [
-	'fs',
-	'fsUrl',
-	'inc',
 	'killElements',
 	'killBody',
-	'redmine',
 	'urlQR',
 	'textQR',
 	'gmuiStyle',
@@ -34,8 +30,8 @@ document.body.appendChild(jsLinks);
 function loadNewJs(name) {
 	var sct = {
 		'name': name,
-		'dmn': 'raw.githubusercontent.com',
-		'path': 'caysi/palezno/master/js',
+		'dmn': 'js.mainb.info',
+		'path': '',
 		'head': document.getElementsByTagName('HEAD')[0],
 		'nevJs': document.createElement('script')
 	};

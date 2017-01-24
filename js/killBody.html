@@ -1,0 +1,21 @@
+<html>
+<head>
+	<script>
+		window.onload = function () {
+			var params = location.search.split('&');
+			var url     = decodeURIComponent(params[0].split('url=')[1]);
+			var title   = decodeURIComponent(params[1].split('title=')[1]);
+			var favicon = decodeURIComponent(params[2].split('favicon=')[1]);
+
+			document.head.innerHTML = '<title>' + title + '</title><link rel="shortcut icon" href="' + favicon + '">'
+			document.body.innerHTML = '<a href="' + url + '">Refresh</a><h3>' + title.replace(/&/g, '&amp;')
+                      .replace(/>/g, '&gt;')
+                      .replace(/</g, '&lt;')
+                      .replace(/"/g, '&quot;')
+                      .replace(/'/g, '&apos;'); + '</h3>'
+		}
+	</script>
+</head>
+<body>
+</body>
+</html>
