@@ -35,10 +35,10 @@ if [ ! "$(dpkg -s sshfs 2>&1 | grep Status)" ]; then
 fi
 
 # Check user group fuse
-if [ ! "$(grep $USER /etc/group | grep ^fuse)" ]; then
-	echo -e "\033[1;44m"'Need add user in group fuse:'"\033[0m"
-	echo -e "\033[1;37;40m""sudo usermod -a -G fuse $USER""\033[0m"
-fi
+#if [ ! "$(grep $USER /etc/group | grep ^fuse)" ]; then
+#	echo -e "\033[1;44m"'Need add user in group fuse:'"\033[0m"
+#	echo -e "\033[1;37;40m""sudo usermod -a -G fuse $USER""\033[0m"
+#fi
 
 
 if [ ! -d $SSHFS_DIR/$FOLDER ]; then
