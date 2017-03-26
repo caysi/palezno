@@ -16,7 +16,7 @@ function caysi_renderErrorMessage(&$error, $fatal=false) {
 /*
 * Handler amost all errors
 */
-function caysi_error_handler(&$errno, &$errstr, &$errfile, &$errline, &$errcontext) {
+function caysi_error_handler($errno, $errstr, $errfile, $errline, $errcontext) {
 	if(!(error_reporting() & $errno)) {
 		// Этот код ошибки не включен в error_reporting
 		return;
