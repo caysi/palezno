@@ -17,7 +17,7 @@ cmdOutTest('cat ~/.bashrc | grep \'^export PATH=$PATH:/var/www/palezno/bash/\'',
 
 installedTest('git');
 isLinkTest($_SERVER['HOME'] . '/.gitconfig',     '/var/www/palezno/git/.gitconfig');
-isLinkTest($_SERVER['HOME'] . '/.gitconfiguser', '/var/www/palezno/git/.gitconfiguser');
+isFileTest($_SERVER['HOME'] . '/.gitconfiguser');
 
 installedTest('vim');
 installedTest('vim-gnome');
@@ -33,6 +33,7 @@ installedTest('sshfs');
 isDirTest($_SERVER['HOME'] . '/sshfs');
 installedTest('htop');
 installedTest('atop');
+installedTest('traceroute');
 installedTest('screen');
 installedTest('curl');
 
@@ -44,6 +45,7 @@ installedTest('curl');
 
 
 installedTest('apache2');
+installedTest('libapache2-mod-php');
 cmdOutTest('cat /etc/php/7.0/apache2/php.ini | grep \'^auto_prepend_file\'', '/var/www/palezno/php/F.php');
 cmdOutTest('cat /etc/apache2/ports.conf | grep \'^Listen\'',      'Listen 8080');
 cmdOutTest('cat /etc/apache2/ports.conf | grep ssl_modul -A1',    "\n\t" . 'Listen 8443');
@@ -93,7 +95,6 @@ installedTest('php-xhprof');
 
 
 
-installedTest('libapache2-mod-php7.0');
 installedTest('chromium-browser');
 installedTest('libreoffice');
 installedTest('gimp');
