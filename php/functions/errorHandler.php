@@ -85,6 +85,7 @@ function caysi_register_shutdown_function() {
 		chmod(DEBUG_CONTENT_FILE, DEBUG_CONTENT_FILE_MODE);
 	}
 	else {
+		echo "\n\n\n";
 		echo $debugContent;
 	}
 }

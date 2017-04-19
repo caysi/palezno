@@ -4,9 +4,10 @@ function caysi_color_var_dump(&$var, $tag = 'pre', $indent=0) { //TODO color_...
 	if($indent > 5)
 		return '<'.$tag.' style="color: red;">{...}</'.$tag.'>';
 
+	$funcName = __FUNCTION__;
 	// Params
 	//$preStyle = ' margin: 1px 0;';
-	$indentType = '    '; // 4 пробела
+	$indentType = '<span style="border-left: solid #ccc 1px;"> </span>   '; // 4 пробела
 	$boolean  = array('name' => 'boolean',  'colorT' => 'black', 'colorF' => 'black');
 	$integer  = array('name' => 'integer',  'color' => 'blue');
 	$float    = array('name' => 'double',   'color' => 'grey');
@@ -41,9 +42,16 @@ function caysi_color_var_dump(&$var, $tag = 'pre', $indent=0) { //TODO color_...
 		else {
 		$printString.= '<'.$tag.'><b>array</b>('."\n";
 
+		$nameMaxLength = F::_call('array_max_length', array(array_keys($var)));
 		foreach($var as $key=>&$value) {
-			$printString.= str_repeat($indentType, $indent+1).caysi_color_var_dump($key, 'span').' => ';
-			$printString.= caysi_color_var_dump($value, 'span', $indent+1);
+			$printString.= str_repeat($indentType, $indent+1) . $funcName($key, 'span');
+			if($nameMaxLength !== null) {
+				if(strlen($key) < $nameMaxLength) {
+					$printString.= '<span style="border-bottom: solid #ccc 1px;">' . F::_call('string_add_spaces', array($key, $nameMaxLength)) . '</span>';
+				}
+			}
+			$printString.= ' => ';
+			$printString.= $funcName($value, 'span', $indent+1);
 			$printString.= ','."\n";
 		}
 
@@ -67,7 +75,7 @@ function caysi_color_var_dump(&$var, $tag = 'pre', $indent=0) { //TODO color_...
 				$visibility = '<b>+</b>';
 
 			$printString.= ''.str_repeat($indentType, $indent+1).$visibility.' '.'$'.$key.' = ';
-			$printString.= caysi_color_var_dump($value, 'span', $indent+1);
+			$printString.= $funcName($value, 'span', $indent+1);
 			$printString.= ';'."\n";
 		}
 

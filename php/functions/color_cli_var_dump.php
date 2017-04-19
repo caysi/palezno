@@ -7,7 +7,7 @@ function caysi_color_cli_var_dump(&$var, $tag = 'pre', $indent=0) { //TODO color
 	$funcName = __FUNCTION__;
 	// Params
 	//$preStyle = ' margin: 1px 0;';
-	$indentType = '    '; // 4 пробела
+	$indentType = "\033[30;47m" . ' ' . "\033[0m" . '   '; // 4 пробела
 	$boolean  = array('name' => 'boolean',  'colorT' => 'black', 'colorF' => 'black');
 	$integer  = array('name' => 'integer',  'color' => 'blue');
 	$float    = array('name' => 'double',   'color' => 'grey');
@@ -42,8 +42,15 @@ function caysi_color_cli_var_dump(&$var, $tag = 'pre', $indent=0) { //TODO color
 		else {
 		$printString.= 'array('."\n";
 
+		$nameMaxLength = F::_call('array_max_length', array(array_keys($var)));
 		foreach($var as $key=>&$value) {
-			$printString.= str_repeat($indentType, $indent+1) . $funcName($key, 'span').' => ';
+			$printString.= str_repeat($indentType, $indent+1) . $funcName($key, 'span');
+			if($nameMaxLength !== null) {
+				if(strlen($key) < $nameMaxLength) {
+					$printString.= F::_call('string_add_spaces', array($key, $nameMaxLength));
+				}
+			}
+			$printString.= ' => ';
 			$printString.= $funcName($value, 'span', $indent+1);
 			$printString.= ','."\n";
 		}
