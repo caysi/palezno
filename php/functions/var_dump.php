@@ -12,10 +12,10 @@ function caysi_var_dump() {
 	}
 	else {
 		foreach($args as &$var) {
-			$var_dump_content.= '<hr>';
+			$var_dump_content.= '<hr>' . "\n";
 			$var_dump_content.= F::_call('color_var_dump', array($var));
 		}
-		$var_dump_content.= '<hr class="block">';
+		$var_dump_content.= '<hr class="block">' . "\n";
 	}
 
 	if(defined('NSD')){
