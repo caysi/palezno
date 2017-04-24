@@ -79,6 +79,7 @@ else
 	xtermCom="$xtermCom -e /bin/bash -c '$com'"
 fi
 
+if [[ $d ]]; then echo "$com"; exit; fi
 
 
 
