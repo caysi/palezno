@@ -37,6 +37,7 @@
 	fe    = fetch
 	pus   = !git pull && git submodule update --init
 	st    = status
+	sts   = status -s
 	re    = rebase
 	mef   = merge --no-ff --no-edit
 	mefe  = merge --no-ff
