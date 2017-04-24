@@ -31,6 +31,9 @@ function caysi_error_handler($errno, $errstr, $errfile, $errline, $errcontext) {
 	$backtrace = debug_backtrace();
 	$GLOBALS['debug_info'].= F::_call('renderBacktrace', array($backtrace, __FUNCTION__));
 
+	if(ENVIRONMENT === 'cli') {
+		echo "\033[1;31m" . $GLOBALS['errorNames'][$errno] . "\033[0m: " . $errstr . "\t" . $errfile . ':' . $errline . "\n";
+	}
 	/* Не запускаем внутренний обработчик ошибок PHP */
 	return true;
 }
