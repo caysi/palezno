@@ -62,6 +62,8 @@ cmdOutTest('ls /etc/apache2/sites-enabled', 'multi_default.conf');
 
 installedTest('nginx');
 installedTest('php-fpm');
+# change user in /etc/nginx/nginx.conf
+# change user in /etc/php/7.0/fpm/pool.d/www.conf
 cmdOutTest('cat /etc/php/7.0/fpm/php.ini | grep \'^auto_prepend_file\'', '/var/www/palezno/php/F.php');
 isLinkTest('/etc/nginx/sites-enabled/multi_default.conf', '/var/www/palezno/nginx/multi_default.conf');
 cmdOutTest('ls /etc/nginx/sites-enabled', 'multi_default.conf');
