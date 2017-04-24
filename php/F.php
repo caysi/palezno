@@ -5,7 +5,12 @@ define('STATIC_PATH',       FUNCTIONS_PATH.'/static');
 define('FUNCTIONS_PREFIX',  'caysi_');
 define('DEBUG_CONTENT_FILE',FUNCTIONS_PATH.'/debugContent/index.html'); //TODO вернуть в errorHendler
 
+
+
 if(PHP_SAPI == 'cli'){
+	define('ENVIRONMENT', 'cli');
+}
+elseif(!empty($_SERVER['HTTP_USER_AGENT']) && strtolower($_SERVER['HTTP_USER_AGENT']) == 'curl'){
 	define('ENVIRONMENT', 'cli');
 }
 elseif(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
@@ -15,6 +20,7 @@ elseif(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_
 else{
 	define('ENVIRONMENT', 'html');
 }
+
 
 if(isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] === '/showDebugContent') {
 	if(file_exists(DEBUG_CONTENT_FILE)) {
