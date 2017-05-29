@@ -9,7 +9,7 @@ function caysi_renderBacktrace(&$backtrace, $killFuncName=NULL) {
 		if(!isset($bt['line'])) { $bt['line'] = ':('; }
 		if(strpos($bt['file'], $libDir.'/') !== false) {
 			$count++;
-			if(isset($backtrace[$key+1]) && strpos($backtrace[$key+1]['file'], $libDir.'/') === false) {
+			if(isset($backtrace[$key+1]) && isset($backtrace[$key+1]['file']) && strpos($backtrace[$key+1]['file'], $libDir.'/') === false) {
 				$nextF = &$backtrace[$key+1]['function'];
 				if($nextF === '_call')
 					$count++;

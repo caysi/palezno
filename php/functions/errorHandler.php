@@ -10,7 +10,11 @@ $GLOBALS['errorNames'] = require(FUNCTIONS_PATH.'/errorNames.php');
 function caysi_renderErrorMessage(&$error, $fatal=false) {
 	$class = 'error_handler';
 	if($fatal) $class.= '_fatal';
-	return '<b class="'.$class.'">'.$GLOBALS['errorNames'][$error['type']].':</b> '.$error['message'].' <b>'.$error['file'].'</b> <b>'.$error['line'].'</b><br />'."\n";
+	$errorMessage = $error['message'];
+	if(strpos($errorMessage, "\n") !== false || strpos($errorMessage, "\r") !== false) {
+		$errorMessage = '<pre>' . $errorMessage . '</pre>';
+	}
+	return '<b class="'.$class.'">'.$GLOBALS['errorNames'][$error['type']].':</b> '.$errorMessage.' <b>'.$error['file'].'</b> <b>'.$error['line'].'</b><br />'."\n";
 }
 
 /*
