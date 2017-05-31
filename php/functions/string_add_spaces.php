@@ -1,10 +1,15 @@
 <?php
 function caysi_string_add_spaces($string, $needLength) {
-	$needSpaces = $needLength - strlen($string);
-	if(gettype($string) === 'integer') {
-		$needSpaces+= 2;
+
+	$length = strlen($string);
+	if(gettype($string) === 'string') {
+		$length+= 2;
 	}
+
+	$needSpaces = $needLength - $length;
 	$spaces = '';
+
+
 	for($i = 0; $i < $needSpaces; $i++) {
 		$spaces.= ' ';
 	}
