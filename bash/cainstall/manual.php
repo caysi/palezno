@@ -113,6 +113,7 @@ installedTest('unar');
 installedTest('openjdk-7-jre');
 installedTest('virtualbox');
 installedTest('skype');
+installedTest('tree');
 
 
 
