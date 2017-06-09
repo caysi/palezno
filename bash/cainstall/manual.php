@@ -21,6 +21,7 @@ cmdOutTest('cat /usr/share/X11/xorg.conf.d/*synaptics.conf | grep \'Option "Touc
 
 cmdOutTest('cat ~/.bashrc | grep \'^export PATH=$PATH:/var/www/palezno/bash/\'', 'export PATH=$PATH:/var/www/palezno/bash/');
 
+# http://practicalrambler.blogspot.com/2017/02/xfce-how-to-execute-shell-scripts-from.html
 cmdOutTest('cat ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml | grep \'misc-exec-shell-scripts-by-default\'', 'true');
 
 installedTest('git');
