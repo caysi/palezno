@@ -92,7 +92,7 @@ class F {
 		static $ts;
 		if(isset($ts) && !$clear) {
 			$line = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[0]['line'];
-			$ctn = '=t=>L: ' . $line . "\t" . number_format(($now - $ts), 10, '.', ' ') . "\t" . number_format($now, 10, '.', ' ');
+			$ctn = '=t=>L: ' . $line . "\t" . number_format(($now - $ts), 10, '.', ' ') . "\t" . number_format($now, 10, '.', ' ') . "\t" . date('Y-m-d H:i:s');
 			if (PHP_SAPI === 'cli') {
 				echo "\033[1;42m" . $ctn . "\033[0m" . "\n";
 			}
