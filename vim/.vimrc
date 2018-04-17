@@ -137,12 +137,12 @@ vmap <C-C> "+y
 imap <C-V> <esc>"+gpi
 
 	" Tabs
-:nmap <A-right> <ESC>:tabnext<cr>
-:nmap <A-left>  <ESC>:tabprevious<cr>
-:imap <A-right> <ESC>:tabnext<cr>
-:imap <A-left>  <ESC>:tabprevious<cr>
-:vmap <A-right> <ESC>:tabnext<cr>
-:vmap <A-left>  <ESC>:tabprevious<cr>
+:nmap <tab> <ESC>:tabnext<cr>
+:nmap <S-tab>  <ESC>:tabprevious<cr>
+":imap <tab> <ESC>:tabnext<cr>
+":imap <S-tab>  <ESC>:tabprevious<cr>
+":vmap <tab> <ESC>:tabnext<cr>
+":vmap <S-tab>  <ESC>:tabprevious<cr>
 
 	" F2 - быстрое сохранение
 nmap <F2> :w<cr>
