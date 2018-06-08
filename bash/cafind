@@ -63,7 +63,7 @@ COM=$COM" -type f$FIND_PARAMS"
 #COM=$COM" -exec grep $GREP_DEF_PARAMS$GREP_PARAMS '$1' '{}' \;"
 COM=$COM" | sed -e 's/ /\\\ /g'"
 COM=$COM" | xargs grep $GREP_DEF_PARAMS$GREP_PARAMS '$1'"
-COM=$COM" | sed -e 's/\.\/\(.*:.*[0-9]\+\)\(.*:\)/\1\t\2/'"
+COM=$COM" | sed -e 's/\.\/\([^:\-]*[:\-][^:\-]*[0-9]\+[^:\-]*m\)\([^:\-]*[:\-]\)/\1\t\2/'"
 
 echo -e "\033[1;42m"
 echo $COM
