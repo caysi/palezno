@@ -1,14 +1,18 @@
 #!/bin/bash
-deviceId=$(xinput list | grep -iEo 'TouchPad\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}')
-enabled=$(xinput list-props $deviceId | grep "Device Enabled" | grep -o "[01]$")
+deviceIds=$(xinput list | grep -iEo 'Touch\w+\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}')
 
-if [ $enabled = 1 ]; then
-	xinput --disable $deviceId
-	synclient TouchpadOff=1
-	notify-send Touchpad Disabled
-else
-	xinput --enable $deviceId
-	synclient TouchpadOff=0
-	notify-send Touchpad Enabled
-fi
+for deviceId in $deviceIds
+do
+	enabled=$(xinput list-props $deviceId | grep "Device Enabled" | grep -o "[01]$")
+
+	if [ $enabled = 1 ]; then
+		xinput --disable $deviceId
+		synclient TouchpadOff=1
+		notify-send Touchpad Disabled
+	else
+		xinput --enable $deviceId
+		synclient TouchpadOff=0
+		notify-send Touchpad Enabled
+	fi
+done
 
